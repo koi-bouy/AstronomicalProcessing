@@ -58,7 +58,7 @@
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
             ListBoxNeutrinos.Size = new Size(120, 364);
             ListBoxNeutrinos.TabIndex = 0;
-            ListBoxNeutrinos.SelectedIndexChanged += SelectNeutrino;
+            ListBoxNeutrinos.SelectedIndexChanged += SelectedNeutrinoChanged;
             // 
             // TextBoxSearch
             // 
