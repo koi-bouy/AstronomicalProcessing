@@ -1,14 +1,30 @@
-﻿
-namespace AstronimicalProcessing;
+﻿namespace AT2_30099423;
 partial class AstronomicalProcessing
 {
-
+    /// <summary>
+    /// Load the file and initialise variables
+    /// </summary>
     protected override void OnLoad(EventArgs e)
     {
+        if (File.Exists(filePath))
+        {
+            LoadFile();
+        }
+        FilePath.Text = filePath;
         neutrinoList = GenerateNeutrinos();
-        Display();
+        UpdateList();
         rdoSortAsc.Checked = true;
     }
+
+    /// <summary>
+    /// Save to file on close
+    /// </summary>
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        base.OnFormClosed(e);
+        SaveFile();
+    }
+
     private static List<int> GenerateNeutrinos()
     {
         Random rand = new Random();
@@ -19,7 +35,11 @@ partial class AstronomicalProcessing
         }
         return list;
     }
-    private void Display()
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void UpdateList()
     {
         ListBoxNeutrinos.Items.Clear();
         foreach (int interaction in neutrinoList)
@@ -28,9 +48,15 @@ partial class AstronomicalProcessing
         }
     }
 
-    private void ShowError(string message)
+    /// <summary>
+    /// Displays an error message.
+    /// </summary>
+    /// <param name="message">Error message to display</param>
+    /// <param name="errorType">Error prefix</param>
+    private void ShowError(string message, string errorType = "")
     {
-        MessageBox.Show(message, "Error");
+        string errorCaption = errorType + (string.IsNullOrEmpty(errorType) ? "Error" : " Error");
+        MessageBox.Show(message, caption: errorCaption, buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
     }
 
 

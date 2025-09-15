@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AstronimicalProcessing
+﻿namespace AT2_30099423
 {
+    /// <summary>
+    /// Binary Search and Bubble search algorithms for integer lists.
+    /// </summary>
     public static class Algorithms
     {
         public static void BubbleSort(List<int> list, bool asc = true)
@@ -26,9 +22,17 @@ namespace AstronimicalProcessing
                 }
             }
         }
-        public static int BinarySearch(List<int> list, int search)
+        /// <summary>
+        /// Uses Binary Search to find an integer in a list and return its index
+        /// </summary>
+        /// <param name="list"></param>
+        /// 
+        /// <param name="search"></param>
+        /// <param name="asc"></param>
+        /// <returns></returns>
+        public static int BinarySearch(List<int> list, int search, bool asc = true)
         {
-            
+
 
             int start = 0, end = list.Count() - 1;
             int maxLoops = end > 0 ? (int)Math.Ceiling(Math.Log2(list.Count())) : 0;

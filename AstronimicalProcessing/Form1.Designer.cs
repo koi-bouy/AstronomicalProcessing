@@ -1,5 +1,5 @@
 
-﻿namespace AstronimicalProcessing
+﻿namespace AT2_30099423
 {
     partial class AstronomicalProcessing
     {
@@ -30,25 +30,27 @@
         private void InitializeComponent()
         {
             ListBoxNeutrinos = new ListBox();
-            TextBoxSearch = new TextBox();
-            TextBoxEditValue = new TextBox();
-            LabelNewValue = new Label();
-            ButtonSearch = new Button();
+            menuStrip1 = new MenuStrip();
+            MenuFile = new ToolStripMenuItem();
+            MenuSave = new ToolStripMenuItem();
+            MenuSaveAs = new ToolStripMenuItem();
+            MenuLoad = new ToolStripMenuItem();
             ButtonGen = new Button();
-            ButtonEdit = new Button();
-            ButtonSort = new Button();
             GrpSortOrder = new GroupBox();
             rdoSortAsc = new RadioButton();
             rdoSortDesc = new RadioButton();
-            label1 = new Label();
-            menuStrip1 = new MenuStrip();
-            fileToolStripMenuItem = new ToolStripMenuItem();
-            saveToolStripMenuItem = new ToolStripMenuItem();
-            saveToolStripMenuItem1 = new ToolStripMenuItem();
-            saveAsToolStripMenuItem = new ToolStripMenuItem();
-            loadToolStripMenuItem = new ToolStripMenuItem();
-            GrpSortOrder.SuspendLayout();
+            ButtonSort = new Button();
+            TextBoxSearch = new TextBox();
+            ButtonSearch = new Button();
+            TextBoxEditValue = new TextBox();
+            ButtonEdit = new Button();
+            LabelNewValue = new Label();
+            LabelSearch = new Label();
+            FilePathLabel = new Label();
+            FilePathWrap = new Label();
+            FilePath = new TextBox();
             menuStrip1.SuspendLayout();
+            GrpSortOrder.SuspendLayout();
             SuspendLayout();
             // 
             // ListBoxNeutrinos
@@ -57,83 +59,64 @@
             ListBoxNeutrinos.Location = new Point(12, 28);
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
             ListBoxNeutrinos.Size = new Size(120, 364);
-            ListBoxNeutrinos.TabIndex = 0;
+            ListBoxNeutrinos.TabIndex = 6;
             ListBoxNeutrinos.SelectedIndexChanged += SelectedNeutrinoChanged;
             // 
-            // TextBoxSearch
+            // menuStrip1
             // 
-            TextBoxSearch.Location = new Point(138, 183);
-            TextBoxSearch.Name = "TextBoxSearch";
-            TextBoxSearch.Size = new Size(149, 23);
-            TextBoxSearch.TabIndex = 1;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { MenuFile });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(355, 24);
+            menuStrip1.TabIndex = 11;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // TextBoxEditValue
+            // MenuFile
             // 
-            TextBoxEditValue.Location = new Point(138, 228);
-            TextBoxEditValue.Name = "TextBoxEditValue";
-            TextBoxEditValue.Size = new Size(149, 23);
-            TextBoxEditValue.TabIndex = 1;
+            MenuFile.DropDownItems.AddRange(new ToolStripItem[] { MenuSave, MenuSaveAs, MenuLoad });
+            MenuFile.Name = "MenuFile";
+            MenuFile.Size = new Size(37, 20);
+            MenuFile.Text = "File";
             // 
-            // LabelNewValue
+            // MenuSave
             // 
-            LabelNewValue.AutoSize = true;
-            LabelNewValue.Location = new Point(138, 210);
-            LabelNewValue.Name = "LabelNewValue";
-            LabelNewValue.Size = new Size(62, 15);
-            LabelNewValue.TabIndex = 3;
-            LabelNewValue.Text = "New Value";
+            MenuSave.Name = "MenuSave";
+            MenuSave.Size = new Size(121, 22);
+            MenuSave.Text = "Save";
+            MenuSave.Click += MenuSave_Click;
             // 
-            // ButtonSearch
+            // MenuSaveAs
             // 
-            ButtonSearch.Location = new Point(293, 183);
-            ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(57, 23);
-            ButtonSearch.TabIndex = 5;
-            ButtonSearch.Text = "Search";
-            ButtonSearch.UseVisualStyleBackColor = true;
-
-            ButtonSearch.Click += ButtonSearch_Click;
+            MenuSaveAs.Name = "MenuSaveAs";
+            MenuSaveAs.Size = new Size(121, 22);
+            MenuSaveAs.Text = "Save as...";
+            MenuSaveAs.Click += MenuSaveAs_Click;
+            // 
+            // MenuLoad
+            // 
+            MenuLoad.Name = "MenuLoad";
+            MenuLoad.Size = new Size(121, 22);
+            MenuLoad.Text = "Load";
+            MenuLoad.Click += MenuLoad_Click;
             // 
             // ButtonGen
             // 
             ButtonGen.Location = new Point(138, 28);
             ButtonGen.Name = "ButtonGen";
             ButtonGen.Size = new Size(212, 23);
-            ButtonGen.TabIndex = 8;
+            ButtonGen.TabIndex = 0;
             ButtonGen.Text = "Record";
             ButtonGen.UseVisualStyleBackColor = true;
             ButtonGen.Click += ButtonRecord_Click;
             // 
-            // ButtonEdit
-            // 
-            ButtonEdit.Location = new Point(293, 228);
-            ButtonEdit.Name = "ButtonEdit";
-            ButtonEdit.Size = new Size(57, 23);
-            ButtonEdit.TabIndex = 6;
-            ButtonEdit.Text = "Edit";
-            ButtonEdit.UseVisualStyleBackColor = true;
-
-            ButtonEdit.Click += ButtonEdit_Click;
-            // 
-            // ButtonSort
-            // 
-            ButtonSort.Location = new Point(138, 57);
-            ButtonSort.Name = "ButtonSort";
-            ButtonSort.Size = new Size(120, 23);
-            ButtonSort.TabIndex = 7;
-            ButtonSort.Text = "Sort";
-            ButtonSort.UseVisualStyleBackColor = true;
-            ButtonSort.Click += ButtonSort_Click;
-            // 
-
             // GrpSortOrder
             // 
             GrpSortOrder.Controls.Add(rdoSortAsc);
             GrpSortOrder.Controls.Add(rdoSortDesc);
-            GrpSortOrder.Location = new Point(138, 86);
+            GrpSortOrder.Location = new Point(138, 57);
             GrpSortOrder.Name = "GrpSortOrder";
             GrpSortOrder.Size = new Size(120, 73);
-            GrpSortOrder.TabIndex = 9;
+            GrpSortOrder.TabIndex = 1;
             GrpSortOrder.TabStop = false;
             GrpSortOrder.Text = "Sort Order";
             // 
@@ -143,7 +126,7 @@
             rdoSortAsc.Location = new Point(6, 22);
             rdoSortAsc.Name = "rdoSortAsc";
             rdoSortAsc.Size = new Size(81, 19);
-            rdoSortAsc.TabIndex = 10;
+            rdoSortAsc.TabIndex = 1;
             rdoSortAsc.TabStop = true;
             rdoSortAsc.Text = "Ascending";
             rdoSortAsc.UseVisualStyleBackColor = true;
@@ -154,67 +137,114 @@
             rdoSortDesc.Location = new Point(6, 47);
             rdoSortDesc.Name = "rdoSortDesc";
             rdoSortDesc.Size = new Size(87, 19);
-            rdoSortDesc.TabIndex = 0;
+            rdoSortDesc.TabIndex = 2;
             rdoSortDesc.TabStop = true;
             rdoSortDesc.Text = "Descending";
             rdoSortDesc.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // ButtonSort
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(138, 165);
-            label1.Name = "label1";
-            label1.Size = new Size(69, 15);
-            label1.TabIndex = 10;
-            label1.Text = "Search Item";
+            ButtonSort.Location = new Point(138, 139);
+            ButtonSort.Name = "ButtonSort";
+            ButtonSort.Size = new Size(120, 23);
+            ButtonSort.TabIndex = 3;
+            ButtonSort.Text = "Sort";
+            ButtonSort.UseVisualStyleBackColor = true;
+            ButtonSort.Click += ButtonSort_Click;
             // 
-            // menuStrip1
+            // TextBoxSearch
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(355, 24);
-            menuStrip1.TabIndex = 11;
-            menuStrip1.Text = "menuStrip1";
+            TextBoxSearch.Location = new Point(138, 183);
+            TextBoxSearch.Name = "TextBoxSearch";
+            TextBoxSearch.Size = new Size(149, 23);
+            TextBoxSearch.TabIndex = 4;
             // 
-            // fileToolStripMenuItem
+            // ButtonSearch
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { saveToolStripMenuItem, loadToolStripMenuItem });
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
-            fileToolStripMenuItem.Text = "File";
+            ButtonSearch.Location = new Point(293, 183);
+            ButtonSearch.Name = "ButtonSearch";
+            ButtonSearch.Size = new Size(57, 23);
+            ButtonSearch.TabIndex = 5;
+            ButtonSearch.Text = "Search";
+            ButtonSearch.UseVisualStyleBackColor = true;
+            ButtonSearch.Click += ButtonSearch_Click;
             // 
-            // saveToolStripMenuItem
+            // TextBoxEditValue
             // 
-            saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { saveToolStripMenuItem1, saveAsToolStripMenuItem });
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(100, 22);
-            saveToolStripMenuItem.Text = "Save";
+            TextBoxEditValue.Location = new Point(138, 228);
+            TextBoxEditValue.Name = "TextBoxEditValue";
+            TextBoxEditValue.Size = new Size(149, 23);
+            TextBoxEditValue.TabIndex = 7;
             // 
-            // saveToolStripMenuItem1
+            // ButtonEdit
             // 
-            saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            saveToolStripMenuItem1.Size = new Size(114, 22);
-            saveToolStripMenuItem1.Text = "Save";
+            ButtonEdit.Location = new Point(293, 228);
+            ButtonEdit.Name = "ButtonEdit";
+            ButtonEdit.Size = new Size(57, 23);
+            ButtonEdit.TabIndex = 8;
+            ButtonEdit.Text = "Edit";
+            ButtonEdit.UseVisualStyleBackColor = true;
+            ButtonEdit.Click += ButtonEdit_Click;
             // 
-            // saveAsToolStripMenuItem
+            // LabelNewValue
             // 
-            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(114, 22);
-            saveAsToolStripMenuItem.Text = "Save As";
+            LabelNewValue.AutoSize = true;
+            LabelNewValue.Location = new Point(138, 210);
+            LabelNewValue.Name = "LabelNewValue";
+            LabelNewValue.Size = new Size(62, 15);
+            LabelNewValue.TabIndex = 9;
+            LabelNewValue.Text = "New Value";
             // 
-            // loadToolStripMenuItem
+            // LabelSearch
             // 
-            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(100, 22);
-            loadToolStripMenuItem.Text = "Load";
+            LabelSearch.AutoSize = true;
+            LabelSearch.Location = new Point(138, 165);
+            LabelSearch.Name = "LabelSearch";
+            LabelSearch.Size = new Size(69, 15);
+            LabelSearch.TabIndex = 10;
+            LabelSearch.Text = "Search Item";
+            // 
+            // FilePathLabel
+            // 
+            FilePathLabel.AutoSize = true;
+            FilePathLabel.Location = new Point(138, 254);
+            FilePathLabel.Name = "FilePathLabel";
+            FilePathLabel.Size = new Size(52, 15);
+            FilePathLabel.TabIndex = 12;
+            FilePathLabel.Text = "File Path";
+            // 
+            // FilePathWrap
+            // 
+            FilePathWrap.AutoSize = true;
+            FilePathWrap.Location = new Point(138, 272);
+            FilePathWrap.MaximumSize = new Size(212, 0);
+            FilePathWrap.Name = "FilePathWrap";
+            FilePathWrap.Size = new Size(0, 15);
+            FilePathWrap.TabIndex = 0;
+            FilePathWrap.Visible = false;
+            // 
+            // FilePath
+            // 
+            FilePath.Location = new Point(138, 272);
+            FilePath.MaximumSize = new Size(212, int.MaxValue);
+            FilePath.Multiline = true;
+            FilePath.Name = "FilePath";
+            FilePath.ReadOnly = true;
+            FilePath.Size = new Size(212, 23);
+            FilePath.TabIndex = 12;
+            FilePath.TabStop = false;
+            FilePath.DoubleClick += MenuLoad_Click;
             // 
             // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(355, 399);
-            Controls.Add(label1);
+            Controls.Add(FilePath);
+            Controls.Add(FilePathWrap);
+            Controls.Add(FilePathLabel);
+            Controls.Add(LabelSearch);
             Controls.Add(GrpSortOrder);
             Controls.Add(ButtonGen);
             Controls.Add(ButtonSort);
@@ -224,15 +254,15 @@
             Controls.Add(TextBoxEditValue);
             Controls.Add(TextBoxSearch);
             Controls.Add(ListBoxNeutrinos);
-
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "AstronomicalProcessing";
             Text = "Astronomical Processing";
-            GrpSortOrder.ResumeLayout(false);
-            GrpSortOrder.PerformLayout();
+            Load += AstronomicalProcessing_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            GrpSortOrder.ResumeLayout(false);
+            GrpSortOrder.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,12 +281,14 @@
         private GroupBox GrpSortOrder;
         private RadioButton rdoSortAsc;
         private RadioButton rdoSortDesc;
-        private Label label1;
+        private Label LabelSearch;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem saveToolStripMenuItem1;
-        private ToolStripMenuItem saveAsToolStripMenuItem;
-        private ToolStripMenuItem loadToolStripMenuItem;
+        private ToolStripMenuItem MenuFile;
+        private ToolStripMenuItem MenuSave;
+        private ToolStripMenuItem MenuLoad;
+        private ToolStripMenuItem MenuSaveAs;
+        private Label FilePathLabel;
+        private Label FilePathWrap;
+        private TextBox FilePath;
     }
 }

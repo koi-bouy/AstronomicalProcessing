@@ -2,7 +2,18 @@
   "help": "https://go.microsoft.com/fwlink/?linkid=866610",
   "dependentFileProviders": {
     "add": {
-      "pathSegment": {}
+      "pathSegment": {},
+      "fileToFile": {
+        "add": {
+          "Methods.cs": [
+            "Form1.cs"
+          ],
+          "FileManagement.cs": [
+            "Form1.cs"
+          ]
+        }
+      }
     }
+
   }
 }

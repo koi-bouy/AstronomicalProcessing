@@ -9,9 +9,4 @@
 
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Compile Include="Methods.cs">
-			<DependentUpon>Form1.cs</DependentUpon>
-		</Compile>
-	</ItemGroup>
 </Project>
