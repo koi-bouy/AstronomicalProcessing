@@ -258,7 +258,6 @@
             MainMenuStrip = menuStrip1;
             Name = "AstronomicalProcessing";
             Text = "Astronomical Processing";
-            Load += AstronomicalProcessing_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             GrpSortOrder.ResumeLayout(false);
