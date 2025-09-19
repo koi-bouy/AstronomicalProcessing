@@ -1,5 +1,5 @@
 
-﻿namespace AT2_30099423
+namespace AT2_30099423
 {
     partial class AstronomicalProcessing
     {
@@ -49,6 +49,8 @@
             FilePathLabel = new Label();
             FilePathWrap = new Label();
             FilePath = new TextBox();
+            saveAsDialog = new SaveFileDialog();
+            loadFileDialog = new OpenFileDialog();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             SuspendLayout();
@@ -235,6 +237,35 @@
             FilePath.TabStop = false;
             FilePath.DoubleClick += MenuLoad_Click;
             // 
+            // saveFileDialog1
+            // 
+            saveAsDialog.FileName = "Neutrinos.txt";
+            saveAsDialog.InitialDirectory = docPath;
+            saveAsDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+            saveAsDialog.FileName = "Neutrinos.txt";
+            saveAsDialog.DefaultExt = "txt";
+            saveAsDialog.FilterIndex = 2;
+            saveAsDialog.Title = "Save Neutrino interactions";
+            saveAsDialog.CheckFileExists = false;
+            saveAsDialog.CheckPathExists = true;
+            saveAsDialog.RestoreDirectory = true;
+            saveAsDialog.InitialDirectory = docPath;
+
+            // 
+            // openFileDialog1
+            // 
+            loadFileDialog.FileName = "Neutrinos.txt";
+            loadFileDialog.FilterIndex = 2;
+            loadFileDialog.Title = "Select File Containing Neutrino Interactions";
+            loadFileDialog.CheckFileExists = true;
+            loadFileDialog.CheckPathExists = true;
+            loadFileDialog.ReadOnlyChecked = true;
+            loadFileDialog.ShowReadOnly = true;
+            loadFileDialog.RestoreDirectory = true;
+            loadFileDialog.InitialDirectory = docPath;
+            loadFileDialog.DefaultExt = "txt";
+            loadFileDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+            // 
             // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -289,5 +320,7 @@
         private Label FilePathLabel;
         private Label FilePathWrap;
         private TextBox FilePath;
+        private SaveFileDialog saveAsDialog;
+        private OpenFileDialog loadFileDialog;
     }
 }

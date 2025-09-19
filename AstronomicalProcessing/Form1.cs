@@ -93,7 +93,14 @@ namespace AT2_30099423
         /// <param name="e"></param>
         private void MenuSave_Click(object sender, EventArgs e)
         {
-            SaveFile();
+            if (FilePath.Text != "No file loaded.")
+            { 
+                SaveFile();
+            }
+            else 
+            { 
+                MenuSaveAs_Click(sender, e); 
+            }
         }
 
 

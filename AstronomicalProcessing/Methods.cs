@@ -1,17 +1,24 @@
 ﻿namespace AT2_30099423;
 partial class AstronomicalProcessing
 {
+    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
     /// <summary>
     /// Load the file and initialise variables
     /// </summary>
     protected override void OnLoad(EventArgs e)
     {
-        if (File.Exists(filePath))
+        base.OnLoad(e);
+        
+        SetPath(loadFileDialog.FileName);
+        if (File.Exists(FilePath.Text))
         {
             LoadFile();
         }
-        FilePath.Text = filePath;
-        neutrinoList = GenerateNeutrinos();
+        else
+        {
+            SetPath("No file loaded.");
+            neutrinoList = GenerateNeutrinos();
+        }
         UpdateList();
         rdoSortAsc.Checked = true;
     }
