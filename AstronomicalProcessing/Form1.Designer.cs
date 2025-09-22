@@ -51,7 +51,6 @@ namespace AT2_30099423
             FilePath = new TextBox();
             saveAsDialog = new SaveFileDialog();
             loadFileDialog = new OpenFileDialog();
-            ButtonTest = new Button();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             SuspendLayout();
@@ -133,7 +132,7 @@ namespace AT2_30099423
             rdoSortAsc.TabStop = true;
             rdoSortAsc.Text = "Ascending";
             rdoSortAsc.UseVisualStyleBackColor = true;
-            rdoSortAsc.CheckedChanged += rdoSortAsc_CheckedChanged;
+            rdoSortAsc.CheckedChanged += SortOrderChanged;
             // 
             // rdoSortDesc
             // 
@@ -145,7 +144,7 @@ namespace AT2_30099423
             rdoSortDesc.TabStop = true;
             rdoSortDesc.Text = "Descending";
             rdoSortDesc.UseVisualStyleBackColor = true;
-            rdoSortDesc.CheckedChanged += rdoSortAsc_CheckedChanged;
+            rdoSortDesc.CheckedChanged += SortOrderChanged;
             // 
             // ButtonSort
             // 
@@ -245,7 +244,6 @@ namespace AT2_30099423
             saveAsDialog.DefaultExt = "txt";
             saveAsDialog.FileName = "Neutrinos.txt";
             saveAsDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
-            saveAsDialog.AddExtension = true;
             saveAsDialog.RestoreDirectory = true;
             saveAsDialog.Title = "Save Neutrino interactions";
             saveAsDialog.FileOk += SaveAsSelected;
@@ -260,16 +258,6 @@ namespace AT2_30099423
             loadFileDialog.ShowReadOnly = true;
             loadFileDialog.Title = "Select File Containing Neutrino Interactions";
             loadFileDialog.FileOk += LoadSelected;
-            saveAsDialog.AddExtension = true;
-            // 
-            // ButtonTest
-            // 
-            ButtonTest.Location = new Point(190, 335);
-            ButtonTest.Name = "ButtonTest";
-            ButtonTest.Size = new Size(75, 23);
-            ButtonTest.TabIndex = 13;
-            ButtonTest.Text = "test search";
-            ButtonTest.UseVisualStyleBackColor = true;
             // 
             // AstronomicalProcessing
             // 
@@ -277,7 +265,6 @@ namespace AT2_30099423
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(355, 399);
-            Controls.Add(ButtonTest);
             Controls.Add(FilePath);
             Controls.Add(FilePathWrap);
             Controls.Add(FilePathLabel);
@@ -328,6 +315,5 @@ namespace AT2_30099423
         private TextBox FilePath;
         private SaveFileDialog saveAsDialog;
         private OpenFileDialog loadFileDialog;
-        private Button ButtonTest;
     }
 }

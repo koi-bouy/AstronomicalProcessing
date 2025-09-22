@@ -60,21 +60,17 @@ namespace AT2_30099423
                     ListBoxNeutrinos.SelectedIndex = index;
                 }
                 else
-                {
                     ShowError($"Could not find {input}", errorType: "Search");
-                }
+
             }
             else
-            {
                 ShowError("Not an integer", "Input");
-            }
+
         }
 
         /// <summary>
-        /// Generate new
+        /// Generate new list of neutrino interactions
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonRecord_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
@@ -91,41 +87,59 @@ namespace AT2_30099423
             TextBoxEditValue.Text = (ListBoxNeutrinos.SelectedItem ?? "Error").ToString();
         }
 
-
+        /// <summary>
+        /// Edit selected item
+        /// </summary>
         private void ButtonEdit_Click(object sender, EventArgs e)
         {
+
+
             if (string.IsNullOrWhiteSpace(TextBoxEditValue.Text))
             {
                 //Clear any whitespace
                 TextBoxEditValue.Clear();
                 ShowError("Nothing entered.", "Input");
             }
-
             else if (int.TryParse(TextBoxEditValue.Text, out int newVal))
             {
-                if (ListBoxNeutrinos.SelectedItem != null)
+                if (ListBoxNeutrinos.SelectedValue != null)
                 {
-
                     neutrinoList[ListBoxNeutrinos.SelectedIndex] = newVal;
+                    unsorted = true;
+                    SyncList();
 
                 }
                 else
-                {
                     ShowError("No item selected");
-                }
+
             }
             else
-            {
                 ShowError("Not an integer", "Input");
-            }
 
-            unsorted = true;
-            SyncList();
+
+
+
+
         }
 
 
 
         #region FileManagement
+
+        //good o'l scope creep
+        private void SaveAsSelected(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SetPath(saveAsDialog.FileName);
+            SaveFile();
+
+        }
+
+        private void LoadSelected(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SetPath(loadFileDialog.FileName);
+            LoadFile();
+
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -134,17 +148,14 @@ namespace AT2_30099423
         private void MenuSave_Click(object sender, EventArgs e)
         {
             if (FilePath.Text != "No file loaded.")
-            {
                 SaveFile();
-            }
             else
-            {
                 saveAsDialog.ShowDialog();
-            }
+
         }
 
         /// <summary>
-        /// load
+        /// Load button ion menu strip
         /// </summary>
         private void MenuLoad_Click(object sender, EventArgs e)
         {
@@ -159,7 +170,6 @@ namespace AT2_30099423
         /// </summary>
         private void MenuSaveAs_Click(object sender, EventArgs e)
         {
-
             // Update the title of the form with the saved filename and path
             saveAsDialog.ShowDialog();
         }
@@ -283,23 +293,7 @@ namespace AT2_30099423
             MessageBox.Show(message, caption: errorCaption, buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
         }
 
-
-        private void SaveAsSelected(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            SetPath(saveAsDialog.FileName);
-            SaveFile();
-
-        }
-
-        private void LoadSelected(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            SetPath(loadFileDialog.FileName);
-            LoadFile();
-
-        }
-
-
-        private void rdoSortAsc_CheckedChanged(object sender, EventArgs e)
+        private void SortOrderChanged(object sender, EventArgs e)
         {
             unsorted = true;
         }
