@@ -51,6 +51,7 @@ namespace AT2_30099423
             FilePath = new TextBox();
             saveAsDialog = new SaveFileDialog();
             loadFileDialog = new OpenFileDialog();
+            ButtonTest = new Button();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             SuspendLayout();
@@ -132,6 +133,7 @@ namespace AT2_30099423
             rdoSortAsc.TabStop = true;
             rdoSortAsc.Text = "Ascending";
             rdoSortAsc.UseVisualStyleBackColor = true;
+            rdoSortAsc.CheckedChanged += rdoSortAsc_CheckedChanged;
             // 
             // rdoSortDesc
             // 
@@ -143,6 +145,7 @@ namespace AT2_30099423
             rdoSortDesc.TabStop = true;
             rdoSortDesc.Text = "Descending";
             rdoSortDesc.UseVisualStyleBackColor = true;
+            rdoSortDesc.CheckedChanged += rdoSortAsc_CheckedChanged;
             // 
             // ButtonSort
             // 
@@ -237,34 +240,36 @@ namespace AT2_30099423
             FilePath.TabStop = false;
             FilePath.DoubleClick += MenuLoad_Click;
             // 
-            // saveFileDialog1
+            // saveAsDialog
             // 
-            saveAsDialog.FileName = "Neutrinos.txt";
-            saveAsDialog.InitialDirectory = docPath;
-            saveAsDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
-            saveAsDialog.FileName = "Neutrinos.txt";
             saveAsDialog.DefaultExt = "txt";
-            saveAsDialog.FilterIndex = 2;
-            saveAsDialog.Title = "Save Neutrino interactions";
-            saveAsDialog.CheckFileExists = false;
-            saveAsDialog.CheckPathExists = true;
+            saveAsDialog.FileName = "Neutrinos.txt";
+            saveAsDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+            saveAsDialog.AddExtension = true;
             saveAsDialog.RestoreDirectory = true;
-            saveAsDialog.InitialDirectory = docPath;
-
+            saveAsDialog.Title = "Save Neutrino interactions";
+            saveAsDialog.FileOk += SaveAsSelected;
             // 
-            // openFileDialog1
+            // loadFileDialog
             // 
-            loadFileDialog.FileName = "Neutrinos.txt";
-            loadFileDialog.FilterIndex = 2;
-            loadFileDialog.Title = "Select File Containing Neutrino Interactions";
-            loadFileDialog.CheckFileExists = true;
-            loadFileDialog.CheckPathExists = true;
-            loadFileDialog.ReadOnlyChecked = true;
-            loadFileDialog.ShowReadOnly = true;
-            loadFileDialog.RestoreDirectory = true;
-            loadFileDialog.InitialDirectory = docPath;
             loadFileDialog.DefaultExt = "txt";
+            loadFileDialog.FileName = "Neutrinos.txt";
             loadFileDialog.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+            loadFileDialog.ReadOnlyChecked = true;
+            loadFileDialog.RestoreDirectory = true;
+            loadFileDialog.ShowReadOnly = true;
+            loadFileDialog.Title = "Select File Containing Neutrino Interactions";
+            loadFileDialog.FileOk += LoadSelected;
+            saveAsDialog.AddExtension = true;
+            // 
+            // ButtonTest
+            // 
+            ButtonTest.Location = new Point(190, 335);
+            ButtonTest.Name = "ButtonTest";
+            ButtonTest.Size = new Size(75, 23);
+            ButtonTest.TabIndex = 13;
+            ButtonTest.Text = "test search";
+            ButtonTest.UseVisualStyleBackColor = true;
             // 
             // AstronomicalProcessing
             // 
@@ -272,6 +277,7 @@ namespace AT2_30099423
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(355, 399);
+            Controls.Add(ButtonTest);
             Controls.Add(FilePath);
             Controls.Add(FilePathWrap);
             Controls.Add(FilePathLabel);
@@ -322,5 +328,6 @@ namespace AT2_30099423
         private TextBox FilePath;
         private SaveFileDialog saveAsDialog;
         private OpenFileDialog loadFileDialog;
+        private Button ButtonTest;
     }
 }

@@ -32,25 +32,19 @@
         /// <returns></returns>
         public static int BinarySearch(List<int> list, int search, bool asc = true)
         {
-
-
-            int start = 0, end = list.Count() - 1;
-            int maxLoops = end > 0 ? (int)Math.Ceiling(Math.Log2(list.Count())) : 0;
-            for (int i = 0; i < maxLoops; i++)
+            int start = 0;
+            int end = list.Count;
+            int middle;
+            while (start <= end)
             {
-                int middle = (start + end) / 2;
-                if (asc ? list[middle] > search : list[middle] < search)
-                {
-                    end = middle + 1;
-                }
-                else if (asc ? list[middle] < search : list[middle] > search)
-                {
-                    start = middle - 1;
-                }
-                else
-                {
+                middle = (start + end) / 2;
+                if (search == list[middle])
                     return middle;
-                }
+                else if ((search < list[middle]) == asc)
+                    end = middle;
+                else
+                    start = middle + 1;
+
             }
             return -1;
         }

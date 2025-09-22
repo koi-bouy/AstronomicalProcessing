@@ -13,6 +13,6 @@ static class Program
         ApplicationConfiguration.Initialize();
         var mainForm = new AstronomicalProcessing();
         Application.Run(mainForm);
-        mainForm.SaveFile();
+        //mainForm.SaveFile();
     }
 }
