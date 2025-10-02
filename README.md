@@ -1,4 +1,4 @@
-# C# ONE AT2 (Sprint 1)  
+# C# ONE AT2  
 Program for AT2 of C# ONE cluster.
 
 To run, open in visual studio, or run the following command:  
