@@ -117,7 +117,8 @@ namespace AT2_30099423
             }
             else if (int.TryParse(TextBoxEditValue.Text, out int newVal))
             {
-                if (ListBoxNeutrinos.SelectedValue != null)
+                // Replace the selected item with the edit value
+                if (ListBoxNeutrinos.SelectedItem != null)
                 {
                     neutrinoList[ListBoxNeutrinos.SelectedIndex] = newVal;
                     unsorted = true;
@@ -256,7 +257,7 @@ namespace AT2_30099423
         #endregion
 
         /// <summary>
-        /// Load the file and initialise variables
+        /// Initialise variables
         /// </summary>
         protected override void OnLoad(EventArgs e)
         {
@@ -266,16 +267,10 @@ namespace AT2_30099423
             string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             saveAsDialog.InitialDirectory = documents;
             loadFileDialog.InitialDirectory = documents;
-            SetPath(documents + "\\" + loadFileDialog.FileName);
-            if (File.Exists(FilePath.Text))
-            {
-                LoadFile();
-            }
-            else
-            {
-                SetPath("No file loaded.");
-                neutrinoList = GenerateNeutrinos();
-            }
+
+            // Set the File Path TextBox to 
+            SetPath("No file loaded.");
+            neutrinoList = GenerateNeutrinos();
             SyncList();
             rdoSortAsc.Checked = true;
         }
@@ -298,11 +293,12 @@ namespace AT2_30099423
         }
 
         /// <summary>
-        /// Updates listbox to reflect list.
+        /// Copies the neutrino interaction list to the ListBox
         /// </summary>
         private void SyncList()
         {
             int selIndx = ListBoxNeutrinos.SelectedIndex;
+
             ListBoxNeutrinos.Items.Clear();
             foreach (int neutrino in neutrinoList)
                 ListBoxNeutrinos.Items.Add(neutrino);

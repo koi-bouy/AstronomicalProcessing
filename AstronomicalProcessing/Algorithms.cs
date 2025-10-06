@@ -2,7 +2,8 @@
 // Date: 22/09/2025
 // Version: 1.0
 // Name: Astronomical Processing
-// Class containing Sorting/Searching algorithms
+// Class containing Sorting/Searching algorithms.
+// Can handle both ascending and descending sorts.
 namespace AT2_30099423
 {
     /// <summary>
