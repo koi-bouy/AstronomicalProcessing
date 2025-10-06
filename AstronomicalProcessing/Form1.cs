@@ -1,9 +1,24 @@
+// Raphael Fernandes, 30099423, Sprint 1 
+// Date: 22/09/2025 
+// Version: 1.0 
+// Name: Astronomical Processing 
+// Simple Windows Forms Application for searching and sorting a list  
+// of recorded neutrino interactions.
+
 namespace AT2_30099423
 {
+
+    /// <summary>
+    /// Main form
+    /// </summary>
     public partial class AstronomicalProcessing : Form
     {
         private List<int> neutrinoList = new List<int>();
         private bool unsorted = true;
+
+        /// <summary>
+        /// Runs setup code from Form1.designer.cs
+        /// </summary>
         public AstronomicalProcessing()
         {
             InitializeComponent();
@@ -126,7 +141,11 @@ namespace AT2_30099423
 
         #region FileManagement
 
-        //good o'l scope creep
+        //good ol' scope creep
+
+        /// <summary>
+        /// Called on conformation of SaveAs dialog box
+        /// </summary>
         private void SaveAsSelected(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SetPath(saveAsDialog.FileName);
@@ -134,17 +153,20 @@ namespace AT2_30099423
 
         }
 
+        /// <summary>
+        /// Called on conformation of Load file dialog box
+        /// </summary>
         private void LoadSelected(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SetPath(loadFileDialog.FileName);
             LoadFile();
 
         }
+
         /// <summary>
-        /// 
+        /// Saves to currently loaded file,
+        /// or calls SaveAs if no file is loaded
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void MenuSave_Click(object sender, EventArgs e)
         {
             if (FilePath.Text != "No file loaded.")
@@ -155,7 +177,7 @@ namespace AT2_30099423
         }
 
         /// <summary>
-        /// Load button ion menu strip
+        /// Load file menu strip button
         /// </summary>
         private void MenuLoad_Click(object sender, EventArgs e)
         {
@@ -166,11 +188,10 @@ namespace AT2_30099423
 
 
         /// <summary>
-        /// Save as button in menu strip
+        /// Save as menu strip button
         /// </summary>
         private void MenuSaveAs_Click(object sender, EventArgs e)
         {
-            // Update the title of the form with the saved filename and path
             saveAsDialog.ShowDialog();
         }
 
@@ -193,9 +214,13 @@ namespace AT2_30099423
         /// </summary>
         private void LoadFile()
         {
+
+            // Clear neutrino list to write file contents
             neutrinoList.Clear();
             using (StreamReader file = new StreamReader(FilePath.Text))
             {
+
+                // Read lines from file until the end is reached
                 for (string? line = file.ReadLine(); line != null; line = file.ReadLine())
                 {
                     if (int.TryParse(line, out int interaction))
@@ -204,8 +229,8 @@ namespace AT2_30099423
                     }
                     else
                     {
+                        // Show error and reset neutrino list to what's in the list box.
                         ShowError($"Error parsing file\nline: {line} is not an integer");
-                        //reset neutrino list to what's in the list box.
                         neutrinoList.Clear();
                         foreach (int item in ListBoxNeutrinos.Items)
                             neutrinoList.Add(item);
@@ -256,7 +281,11 @@ namespace AT2_30099423
         }
 
 
-
+        /// <summary>
+        /// Generates a new list of 24 random integers
+        /// between 10 and 90
+        /// </summary>
+        /// <returns>Generated list</returns>
         private static List<int> GenerateNeutrinos()
         {
             Random rand = new Random();
@@ -293,6 +322,10 @@ namespace AT2_30099423
             MessageBox.Show(message, caption: errorCaption, buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// Called whenever one of the sort order radio buttons are clicked.
+        /// Sets the flag for the list to be resorted.
+        /// </summary>
         private void SortOrderChanged(object sender, EventArgs e)
         {
             unsorted = true;

@@ -1,3 +1,9 @@
+// Raphael Fernandes, 30099423, Sprint 1 
+// Date: 22/09/2025 
+// Version: 1.0 
+// Name: Astronomical Processing 
+// Simple Windows Forms Application for searching and sorting a list  
+// of recorded neutrino interactions.
 
 namespace AT2_30099423
 {
@@ -58,6 +64,7 @@ namespace AT2_30099423
             // ListBoxNeutrinos
             // 
             ListBoxNeutrinos.FormattingEnabled = true;
+            ListBoxNeutrinos.ItemHeight = 15;
             ListBoxNeutrinos.Location = new Point(12, 28);
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
             ListBoxNeutrinos.Size = new Size(120, 364);
@@ -264,7 +271,7 @@ namespace AT2_30099423
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(355, 399);
+            ClientSize = new Size(355, 398);
             Controls.Add(FilePath);
             Controls.Add(FilePathWrap);
             Controls.Add(FilePathLabel);
