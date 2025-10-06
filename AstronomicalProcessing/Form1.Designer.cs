@@ -47,18 +47,22 @@ namespace AT2_30099423
             rdoSortDesc = new RadioButton();
             ButtonSort = new Button();
             TextBoxSearch = new TextBox();
-            ButtonSearch = new Button();
+            ButtonBinSearch = new Button();
             TextBoxEditValue = new TextBox();
             ButtonEdit = new Button();
             LabelNewValue = new Label();
-            LabelSearch = new Label();
             FilePathLabel = new Label();
             FilePathWrap = new Label();
             FilePath = new TextBox();
             saveAsDialog = new SaveFileDialog();
             loadFileDialog = new OpenFileDialog();
+            ButtonSeqSearch = new Button();
+            GrpSearch = new GroupBox();
+            GrpEdit = new GroupBox();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
+            GrpSearch.SuspendLayout();
+            GrpEdit.SuspendLayout();
             SuspendLayout();
             // 
             // ListBoxNeutrinos
@@ -76,7 +80,7 @@ namespace AT2_30099423
             menuStrip1.Items.AddRange(new ToolStripItem[] { MenuFile });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(355, 24);
+            menuStrip1.Size = new Size(574, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -165,33 +169,33 @@ namespace AT2_30099423
             // 
             // TextBoxSearch
             // 
-            TextBoxSearch.Location = new Point(138, 183);
+            TextBoxSearch.Location = new Point(6, 18);
             TextBoxSearch.Name = "TextBoxSearch";
-            TextBoxSearch.Size = new Size(149, 23);
-            TextBoxSearch.TabIndex = 4;
+            TextBoxSearch.Size = new Size(146, 23);
+            TextBoxSearch.TabIndex = 1;
             // 
-            // ButtonSearch
+            // ButtonBinSearch
             // 
-            ButtonSearch.Location = new Point(293, 183);
-            ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(57, 23);
-            ButtonSearch.TabIndex = 5;
-            ButtonSearch.Text = "Search";
-            ButtonSearch.UseVisualStyleBackColor = true;
-            ButtonSearch.Click += ButtonSearch_Click;
+            ButtonBinSearch.Location = new Point(6, 43);
+            ButtonBinSearch.Name = "ButtonBinSearch";
+            ButtonBinSearch.Size = new Size(70, 23);
+            ButtonBinSearch.TabIndex = 2;
+            ButtonBinSearch.Text = "Binary";
+            ButtonBinSearch.UseVisualStyleBackColor = true;
+            ButtonBinSearch.Click += ButtonSearch_Click;
             // 
             // TextBoxEditValue
             // 
-            TextBoxEditValue.Location = new Point(138, 228);
+            TextBoxEditValue.Location = new Point(6, 37);
             TextBoxEditValue.Name = "TextBoxEditValue";
-            TextBoxEditValue.Size = new Size(149, 23);
+            TextBoxEditValue.Size = new Size(146, 23);
             TextBoxEditValue.TabIndex = 7;
             // 
             // ButtonEdit
             // 
-            ButtonEdit.Location = new Point(293, 228);
+            ButtonEdit.Location = new Point(6, 66);
             ButtonEdit.Name = "ButtonEdit";
-            ButtonEdit.Size = new Size(57, 23);
+            ButtonEdit.Size = new Size(146, 23);
             ButtonEdit.TabIndex = 8;
             ButtonEdit.Text = "Edit";
             ButtonEdit.UseVisualStyleBackColor = true;
@@ -200,25 +204,16 @@ namespace AT2_30099423
             // LabelNewValue
             // 
             LabelNewValue.AutoSize = true;
-            LabelNewValue.Location = new Point(138, 210);
+            LabelNewValue.Location = new Point(6, 19);
             LabelNewValue.Name = "LabelNewValue";
             LabelNewValue.Size = new Size(62, 15);
             LabelNewValue.TabIndex = 9;
             LabelNewValue.Text = "New Value";
             // 
-            // LabelSearch
-            // 
-            LabelSearch.AutoSize = true;
-            LabelSearch.Location = new Point(138, 165);
-            LabelSearch.Name = "LabelSearch";
-            LabelSearch.Size = new Size(69, 15);
-            LabelSearch.TabIndex = 10;
-            LabelSearch.Text = "Search Item";
-            // 
             // FilePathLabel
             // 
             FilePathLabel.AutoSize = true;
-            FilePathLabel.Location = new Point(138, 254);
+            FilePathLabel.Location = new Point(138, 351);
             FilePathLabel.Name = "FilePathLabel";
             FilePathLabel.Size = new Size(52, 15);
             FilePathLabel.TabIndex = 12;
@@ -236,7 +231,7 @@ namespace AT2_30099423
             // 
             // FilePath
             // 
-            FilePath.Location = new Point(138, 272);
+            FilePath.Location = new Point(138, 369);
             FilePath.MaximumSize = new Size(212, int.MaxValue);
             FilePath.Multiline = true;
             FilePath.Name = "FilePath";
@@ -266,24 +261,54 @@ namespace AT2_30099423
             loadFileDialog.Title = "Select File Containing Neutrino Interactions";
             loadFileDialog.FileOk += LoadSelected;
             // 
+            // ButtonSeqSearch
+            // 
+            ButtonSeqSearch.Location = new Point(82, 43);
+            ButtonSeqSearch.Name = "ButtonSeqSearch";
+            ButtonSeqSearch.Size = new Size(70, 23);
+            ButtonSeqSearch.TabIndex = 3;
+            ButtonSeqSearch.Text = "Sequential";
+            ButtonSeqSearch.UseVisualStyleBackColor = true;
+            ButtonSeqSearch.Click += ButtonSearch_Click;
+            // 
+            // GrpSearch
+            // 
+            GrpSearch.Controls.Add(ButtonBinSearch);
+            GrpSearch.Controls.Add(ButtonSeqSearch);
+            GrpSearch.Controls.Add(TextBoxSearch);
+            GrpSearch.Location = new Point(138, 168);
+            GrpSearch.Name = "GrpSearch";
+            GrpSearch.Size = new Size(158, 73);
+            GrpSearch.TabIndex = 4;
+            GrpSearch.TabStop = false;
+            GrpSearch.Text = "Search";
+            // 
+            // GrpEdit
+            // 
+            GrpEdit.Controls.Add(TextBoxEditValue);
+            GrpEdit.Controls.Add(ButtonEdit);
+            GrpEdit.Controls.Add(LabelNewValue);
+            GrpEdit.Location = new Point(138, 247);
+            GrpEdit.Name = "GrpEdit";
+            GrpEdit.Size = new Size(158, 98);
+            GrpEdit.TabIndex = 13;
+            GrpEdit.TabStop = false;
+            GrpEdit.Text = "Edit";
+            // 
             // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(355, 398);
+            ClientSize = new Size(574, 398);
+            Controls.Add(GrpEdit);
+            Controls.Add(GrpSearch);
             Controls.Add(FilePath);
             Controls.Add(FilePathWrap);
             Controls.Add(FilePathLabel);
-            Controls.Add(LabelSearch);
             Controls.Add(GrpSortOrder);
             Controls.Add(ButtonGen);
             Controls.Add(ButtonSort);
-            Controls.Add(ButtonEdit);
-            Controls.Add(ButtonSearch);
-            Controls.Add(LabelNewValue);
-            Controls.Add(TextBoxEditValue);
-            Controls.Add(TextBoxSearch);
             Controls.Add(ListBoxNeutrinos);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -293,6 +318,10 @@ namespace AT2_30099423
             menuStrip1.PerformLayout();
             GrpSortOrder.ResumeLayout(false);
             GrpSortOrder.PerformLayout();
+            GrpSearch.ResumeLayout(false);
+            GrpSearch.PerformLayout();
+            GrpEdit.ResumeLayout(false);
+            GrpEdit.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -303,7 +332,7 @@ namespace AT2_30099423
         private TextBox TextBoxSearch;
         private TextBox TextBoxEditValue;
         private Label LabelNewValue;
-        private Button ButtonSearch;
+        private Button ButtonBinSearch;
         private Button ButtonEdit;
 
         private Button ButtonGen;
@@ -311,7 +340,6 @@ namespace AT2_30099423
         private GroupBox GrpSortOrder;
         private RadioButton rdoSortAsc;
         private RadioButton rdoSortDesc;
-        private Label LabelSearch;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem MenuFile;
         private ToolStripMenuItem MenuSave;
@@ -322,5 +350,8 @@ namespace AT2_30099423
         private TextBox FilePath;
         private SaveFileDialog saveAsDialog;
         private OpenFileDialog loadFileDialog;
+        private Button ButtonSeqSearch;
+        private GroupBox GrpSearch;
+        private GroupBox GrpEdit;
     }
 }
