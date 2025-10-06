@@ -1,8 +1,10 @@
 # C# ONE AT2  
 Program for AT2 of C# ONE cluster.
-## Usage
+## Running
 To run, open in visual studio, or run the following command:  
-`dotnet run AstronomicalProcessing`
+```cmd
+dotnet run AstronomicalProcessing
+```
 
 ## Requirements
 This program requires .NET 8  
