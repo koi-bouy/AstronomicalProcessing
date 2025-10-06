@@ -3,7 +3,7 @@ Program for AT2 of C# ONE cluster.
 ## Running
 To run, open in visual studio, or run the following command:  
 ```cmd
-dotnet run AstronomicalProcessing
+dotnet run --project AstronomicalProcessing
 ```
 
 ## Requirements
