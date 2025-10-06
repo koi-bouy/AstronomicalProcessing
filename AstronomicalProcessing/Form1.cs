@@ -1,5 +1,5 @@
-// Raphael Fernandes, 30099423, Sprint 1 
-// Date: 22/09/2025 
+// Raphael Fernandes, 30099423, Sprint 2 
+// Date: 6/10/2025 
 // Version: 1.0 
 // Name: Astronomical Processing 
 // Simple Windows Forms Application for searching and sorting a list  
@@ -55,16 +55,24 @@ namespace AT2_30099423
             else if (int.TryParse(TextBoxSearch.Text, out int input))
             {
 
-                //sort the list if it isn't already
-                bool asc = rdoSortAsc.Checked;
-                if (unsorted)
+                int index;
+                if (!unsorted)
                 {
-                    Algorithms.BubbleSort(neutrinoList, asc);
-                    unsorted = false;
-                }
+                    bool asc = rdoSortAsc.Checked;
+                    //sort the list if it isn't already
+                    //if (unsorted)
+                    //{
+                    //    Algorithms.BubbleSort(neutrinoList, asc);
+                    //    unsorted = false;
+                    //}
 
-                //Use binary search method to get index. Will be -1 if the item can't be found.
-                int index = Algorithms.BinarySearch(neutrinoList, input, asc);
+                    //Use binary search method to get index. Will be -1 if the item can't be found.
+                    index = Algorithms.BinarySearch(neutrinoList, input, asc);
+                }
+                else
+                {
+                    index = Algorithms.SequentialSearch(neutrinoList, input);
+                }
                 SyncList();
 
                 //Select the number if it was found, otherwise 
