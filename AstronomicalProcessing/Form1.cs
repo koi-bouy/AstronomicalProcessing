@@ -335,9 +335,6 @@ namespace AT2_30099423
             unsorted = true;
         }
 
-        private void LabelSearch_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

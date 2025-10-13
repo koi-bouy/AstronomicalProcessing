@@ -59,10 +59,20 @@ namespace AT2_30099423
             ButtonSeqSearch = new Button();
             GrpSearch = new GroupBox();
             GrpEdit = new GroupBox();
+            GrpCalulations = new GroupBox();
+            TextBoxRange = new TextBox();
+            TextBoxMode = new TextBox();
+            TextBoxAverage = new TextBox();
+            TextBoxMidExtreme = new TextBox();
+            ButtonRange = new Button();
+            ButtonAverage = new Button();
+            button2 = new Button();
+            ButtonMidExtreme = new Button();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             GrpSearch.SuspendLayout();
             GrpEdit.SuspendLayout();
+            GrpCalulations.SuspendLayout();
             SuspendLayout();
             // 
             // ListBoxNeutrinos
@@ -80,7 +90,7 @@ namespace AT2_30099423
             menuStrip1.Items.AddRange(new ToolStripItem[] { MenuFile });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(574, 24);
+            menuStrip1.Size = new Size(506, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -116,7 +126,7 @@ namespace AT2_30099423
             // 
             ButtonGen.Location = new Point(138, 28);
             ButtonGen.Name = "ButtonGen";
-            ButtonGen.Size = new Size(212, 23);
+            ButtonGen.Size = new Size(158, 23);
             ButtonGen.TabIndex = 0;
             ButtonGen.Text = "Record";
             ButtonGen.UseVisualStyleBackColor = true;
@@ -128,7 +138,7 @@ namespace AT2_30099423
             GrpSortOrder.Controls.Add(rdoSortDesc);
             GrpSortOrder.Location = new Point(138, 57);
             GrpSortOrder.Name = "GrpSortOrder";
-            GrpSortOrder.Size = new Size(120, 73);
+            GrpSortOrder.Size = new Size(158, 73);
             GrpSortOrder.TabIndex = 1;
             GrpSortOrder.TabStop = false;
             GrpSortOrder.Text = "Sort Order";
@@ -161,7 +171,7 @@ namespace AT2_30099423
             // 
             ButtonSort.Location = new Point(138, 139);
             ButtonSort.Name = "ButtonSort";
-            ButtonSort.Size = new Size(120, 23);
+            ButtonSort.Size = new Size(158, 23);
             ButtonSort.TabIndex = 3;
             ButtonSort.Text = "Sort";
             ButtonSort.UseVisualStyleBackColor = true;
@@ -236,7 +246,7 @@ namespace AT2_30099423
             FilePath.Multiline = true;
             FilePath.Name = "FilePath";
             FilePath.ReadOnly = true;
-            FilePath.Size = new Size(212, 23);
+            FilePath.Size = new Size(158, 23);
             FilePath.TabIndex = 12;
             FilePath.TabStop = false;
             FilePath.DoubleClick += MenuLoad_Click;
@@ -295,12 +305,99 @@ namespace AT2_30099423
             GrpEdit.TabStop = false;
             GrpEdit.Text = "Edit";
             // 
+            // GrpCalulations
+            // 
+            GrpCalulations.Controls.Add(TextBoxRange);
+            GrpCalulations.Controls.Add(TextBoxMode);
+            GrpCalulations.Controls.Add(TextBoxAverage);
+            GrpCalulations.Controls.Add(TextBoxMidExtreme);
+            GrpCalulations.Controls.Add(ButtonRange);
+            GrpCalulations.Controls.Add(ButtonAverage);
+            GrpCalulations.Controls.Add(button2);
+            GrpCalulations.Controls.Add(ButtonMidExtreme);
+            GrpCalulations.Location = new Point(302, 28);
+            GrpCalulations.Name = "GrpCalulations";
+            GrpCalulations.Size = new Size(200, 147);
+            GrpCalulations.TabIndex = 14;
+            GrpCalulations.TabStop = false;
+            GrpCalulations.Text = "Statistical Calculations";
+            // 
+            // TextBoxRange
+            // 
+            TextBoxRange.Location = new Point(94, 111);
+            TextBoxRange.Name = "TextBoxRange";
+            TextBoxRange.ReadOnly = true;
+            TextBoxRange.Size = new Size(100, 23);
+            TextBoxRange.TabIndex = 16;
+            // 
+            // TextBoxMode
+            // 
+            TextBoxMode.Location = new Point(94, 54);
+            TextBoxMode.Name = "TextBoxMode";
+            TextBoxMode.ReadOnly = true;
+            TextBoxMode.Size = new Size(100, 23);
+            TextBoxMode.TabIndex = 5;
+            // 
+            // TextBoxAverage
+            // 
+            TextBoxAverage.Location = new Point(94, 83);
+            TextBoxAverage.Name = "TextBoxAverage";
+            TextBoxAverage.ReadOnly = true;
+            TextBoxAverage.Size = new Size(100, 23);
+            TextBoxAverage.TabIndex = 15;
+            // 
+            // TextBoxMidExtreme
+            // 
+            TextBoxMidExtreme.Location = new Point(94, 25);
+            TextBoxMidExtreme.Name = "TextBoxMidExtreme";
+            TextBoxMidExtreme.ReadOnly = true;
+            TextBoxMidExtreme.Size = new Size(100, 23);
+            TextBoxMidExtreme.TabIndex = 4;
+            // 
+            // ButtonRange
+            // 
+            ButtonRange.Location = new Point(6, 111);
+            ButtonRange.Name = "ButtonRange";
+            ButtonRange.Size = new Size(82, 23);
+            ButtonRange.TabIndex = 3;
+            ButtonRange.Text = "Range";
+            ButtonRange.UseVisualStyleBackColor = true;
+            // 
+            // ButtonAverage
+            // 
+            ButtonAverage.Location = new Point(6, 82);
+            ButtonAverage.Name = "ButtonAverage";
+            ButtonAverage.Size = new Size(82, 23);
+            ButtonAverage.TabIndex = 2;
+            ButtonAverage.Text = "Average";
+            ButtonAverage.TextAlign = ContentAlignment.TopCenter;
+            ButtonAverage.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(6, 50);
+            button2.Name = "button2";
+            button2.Size = new Size(82, 23);
+            button2.TabIndex = 1;
+            button2.Text = "Mode";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // ButtonMidExtreme
+            // 
+            ButtonMidExtreme.Location = new Point(7, 22);
+            ButtonMidExtreme.Name = "ButtonMidExtreme";
+            ButtonMidExtreme.Size = new Size(82, 23);
+            ButtonMidExtreme.TabIndex = 0;
+            ButtonMidExtreme.Text = "Mid Extreme";
+            ButtonMidExtreme.UseVisualStyleBackColor = true;
+            // 
             // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(574, 398);
+            ClientSize = new Size(506, 398);
+            Controls.Add(GrpCalulations);
             Controls.Add(GrpEdit);
             Controls.Add(GrpSearch);
             Controls.Add(FilePath);
@@ -322,6 +419,8 @@ namespace AT2_30099423
             GrpSearch.PerformLayout();
             GrpEdit.ResumeLayout(false);
             GrpEdit.PerformLayout();
+            GrpCalulations.ResumeLayout(false);
+            GrpCalulations.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -353,5 +452,14 @@ namespace AT2_30099423
         private Button ButtonSeqSearch;
         private GroupBox GrpSearch;
         private GroupBox GrpEdit;
+        private GroupBox GrpCalulations;
+        private Button ButtonAverage;
+        private Button button2;
+        private Button ButtonMidExtreme;
+        private Button ButtonRange;
+        private TextBox TextBoxRange;
+        private TextBox TextBoxMode;
+        private TextBox TextBoxAverage;
+        private TextBox TextBoxMidExtreme;
     }
 }
