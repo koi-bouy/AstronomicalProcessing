@@ -1,10 +1,10 @@
-﻿// Raphael Fernandes, Team Koi, Sprint 1
-// Date: 22/09/2025
-// Version: 1.0
+﻿// Raphael Fernandes, 30099423, Sprint 2
+// Date: 6/10/2025
+// Version: 2.0
 // Name: Astronomical Processing
 // Class containing Sorting/Searching algorithms.
 // Can handle both ascending and descending sorts.
-namespace AT2_30099423
+namespace AstronomicalProcessing
 {
     /// <summary>
     /// Binary Search and Bubble search algorithms for integer lists.
@@ -56,6 +56,25 @@ namespace AT2_30099423
                 else
                     start = middle + 1;
 
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Loops through a list, from beginning to end,
+        /// And checks each item if it's search item
+        /// </summary>
+        /// <param name="list">integer list to search</param>
+        /// <param name="search">integer to search for</param>
+        /// <returns>index of search item, or -1 if the item cannot be found</returns>
+        public static int SequentialSearch(List<int> list, int search)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i] == search)
+                {
+                    return i;
+                }
             }
             return -1;
         }

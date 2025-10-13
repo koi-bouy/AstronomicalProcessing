@@ -1,25 +1,26 @@
-// Raphael Fernandes, 30099423, Sprint 1 
-// Date: 22/09/2025 
-// Version: 1.0 
+// Raphael Fernandes, 30099423, Sprint 2 
+// Date: 6/10/2025 
+// Version: 2.0 
 // Name: Astronomical Processing 
 // Simple Windows Forms Application for searching and sorting a list  
 // of recorded neutrino interactions.
 
-namespace AT2_30099423
+namespace AstronomicalProcessing
 {
 
     /// <summary>
     /// Main form
     /// </summary>
-    public partial class AstronomicalProcessing : Form
+    public partial class Form1 : Form
     {
         private List<int> neutrinoList = new List<int>();
         private bool unsorted = true;
+        private Calculations calc = new([]);
 
         /// <summary>
         /// Runs setup code from Form1.designer.cs
         /// </summary>
-        public AstronomicalProcessing()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -41,10 +42,13 @@ namespace AT2_30099423
         }
 
         /// <summary>
-        /// Search the list, sorting if the list isn't sorted already.
+        /// Search the list using binary or sequential sort,
+        /// depending on which which button was clicked
         /// </summary>
+        /// <param name="sender">Control that invoked the method</param>
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
+            Button searchButton = (Button)sender;
             if (string.IsNullOrWhiteSpace(TextBoxSearch.Text))
             {
                 //Clear any whitespace
@@ -55,16 +59,24 @@ namespace AT2_30099423
             else if (int.TryParse(TextBoxSearch.Text, out int input))
             {
 
-                //sort the list if it isn't already
-                bool asc = rdoSortAsc.Checked;
-                if (unsorted)
+                int index;
+                if (searchButton.Text == "Binary")
                 {
-                    Algorithms.BubbleSort(neutrinoList, asc);
-                    unsorted = false;
-                }
+                    bool asc = rdoSortAsc.Checked;
+                    //sort the list if it isn't already
+                    if (unsorted)
+                    {
+                        Algorithms.BubbleSort(neutrinoList, asc);
+                        unsorted = false;
+                    }
 
-                //Use binary search method to get index. Will be -1 if the item can't be found.
-                int index = Algorithms.BinarySearch(neutrinoList, input, asc);
+                    //Use binary search method to get index. Will be -1 if the item can't be found.
+                    index = Algorithms.BinarySearch(neutrinoList, input, asc);
+                }
+                else
+                {
+                    index = Algorithms.SequentialSearch(neutrinoList, input);
+                }
                 SyncList();
 
                 //Select the number if it was found, otherwise 
@@ -88,8 +100,8 @@ namespace AT2_30099423
         /// </summary>
         private void ButtonRecord_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
-            neutrinoList = GenerateNeutrinos();
+            neutrinoList.Clear();
+            neutrinoList.AddRange(GenerateNeutrinos());
             unsorted = true;
             SyncList();
         }
@@ -138,6 +150,44 @@ namespace AT2_30099423
 
         }
 
+
+        #region Calculation Buttons
+        /// <summary>
+        /// Calculates mid extreme of neutrino list and writes to text box
+        /// </summary>
+        private void ButtonMidExtreme_Click(object sender, EventArgs e)
+        {
+            float mid = calc.MidExtreme();
+            string format = mid == (int)mid ? "f0" : "f2";
+            TextBoxMidExtreme.Text = calc.MidExtreme().ToString(format);
+        }
+
+        /// <summary>
+        /// Calculates mode of neutrino list and writes to text box
+        /// </summary>
+        private void ButtonMode_Click(object sender, EventArgs e)
+        {
+            TextBoxMode.Text = calc.Mode().ToString();
+        }
+
+        /// <summary>
+        /// Calculates Average of neutrino list and writes to text box
+        /// </summary>
+        private void ButtonAverage_Click(object sender, EventArgs e)
+        {
+            float average = calc.Average();
+            string format = average == (int)average ? "f0" : "f2";
+            TextBoxAverage.Text = average.ToString(format);
+        }
+
+        /// <summary>
+        /// Calculates Range of neutrino list and writes to text box
+        /// </summary>
+        private void ButtonRange_Click(object sender, EventArgs e)
+        {
+            TextBoxRange.Text = calc.Range().ToString();
+        }
+        #endregion
 
 
         #region FileManagement
@@ -268,11 +318,14 @@ namespace AT2_30099423
             saveAsDialog.InitialDirectory = documents;
             loadFileDialog.InitialDirectory = documents;
 
-            // Set the File Path TextBox to 
+            // Set the File Path TextBox to "No file loaded" by default
             SetPath("No file loaded.");
-            neutrinoList = GenerateNeutrinos();
+
+            //Initialise values
+            neutrinoList.AddRange(GenerateNeutrinos());
             SyncList();
             rdoSortAsc.Checked = true;
+            calc = new Calculations(neutrinoList);
         }
 
 
@@ -312,7 +365,7 @@ namespace AT2_30099423
         /// </summary>
         /// <param name="message">Error message to display</param>
         /// <param name="errorType">Error prefix</param>
-        private void ShowError(string message, string errorType = "")
+        private static void ShowError(string message, string errorType = "")
         {
             string errorCaption = errorType + (string.IsNullOrEmpty(errorType) ? "Error" : " Error");
             MessageBox.Show(message, caption: errorCaption, buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
