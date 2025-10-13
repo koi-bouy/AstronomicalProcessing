@@ -35,6 +35,7 @@ namespace AstronomicalProcessing
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             ListBoxNeutrinos = new ListBox();
             menuStrip1 = new MenuStrip();
             MenuFile = new ToolStripMenuItem();
@@ -56,7 +57,7 @@ namespace AstronomicalProcessing
             FilePath = new TextBox();
             saveAsDialog = new SaveFileDialog();
             loadFileDialog = new OpenFileDialog();
-            ButtonSeqSearch = new Button();
+            ButtonSequentialSearch = new Button();
             GrpSearch = new GroupBox();
             GrpEdit = new GroupBox();
             GrpCalulations = new GroupBox();
@@ -68,6 +69,7 @@ namespace AstronomicalProcessing
             ButtonAverage = new Button();
             ButtonMode = new Button();
             ButtonMidExtreme = new Button();
+            toolTip1 = new ToolTip(components);
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             GrpSearch.SuspendLayout();
@@ -83,6 +85,7 @@ namespace AstronomicalProcessing
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
             ListBoxNeutrinos.Size = new Size(120, 364);
             ListBoxNeutrinos.TabIndex = 6;
+            toolTip1.SetToolTip(ListBoxNeutrinos, "List of neutrino interactions recorded\r\nover the last 24 hours");
             ListBoxNeutrinos.SelectedIndexChanged += SelectedNeutrinoChanged;
             // 
             // menuStrip1
@@ -129,6 +132,7 @@ namespace AstronomicalProcessing
             ButtonGen.Size = new Size(158, 23);
             ButtonGen.TabIndex = 0;
             ButtonGen.Text = "Record";
+            toolTip1.SetToolTip(ButtonGen, "Record new neutrino interactions");
             ButtonGen.UseVisualStyleBackColor = true;
             ButtonGen.Click += ButtonRecord_Click;
             // 
@@ -152,6 +156,7 @@ namespace AstronomicalProcessing
             rdoSortAsc.TabIndex = 1;
             rdoSortAsc.TabStop = true;
             rdoSortAsc.Text = "Ascending";
+            toolTip1.SetToolTip(rdoSortAsc, "Select to sort the list in ascending order");
             rdoSortAsc.UseVisualStyleBackColor = true;
             rdoSortAsc.CheckedChanged += SortOrderChanged;
             // 
@@ -164,6 +169,7 @@ namespace AstronomicalProcessing
             rdoSortDesc.TabIndex = 2;
             rdoSortDesc.TabStop = true;
             rdoSortDesc.Text = "Descending";
+            toolTip1.SetToolTip(rdoSortDesc, "Select to sort the list in Descending order");
             rdoSortDesc.UseVisualStyleBackColor = true;
             rdoSortDesc.CheckedChanged += SortOrderChanged;
             // 
@@ -174,6 +180,7 @@ namespace AstronomicalProcessing
             ButtonSort.Size = new Size(158, 23);
             ButtonSort.TabIndex = 3;
             ButtonSort.Text = "Sort";
+            toolTip1.SetToolTip(ButtonSort, "Sorts the list using bubble sort\nSelect the sort order using the Ascending/Descending buttons");
             ButtonSort.UseVisualStyleBackColor = true;
             ButtonSort.Click += ButtonSort_Click;
             // 
@@ -183,6 +190,7 @@ namespace AstronomicalProcessing
             TextBoxSearch.Name = "TextBoxSearch";
             TextBoxSearch.Size = new Size(146, 23);
             TextBoxSearch.TabIndex = 1;
+            toolTip1.SetToolTip(TextBoxSearch, "Text box for searching the list");
             // 
             // ButtonBinSearch
             // 
@@ -191,6 +199,7 @@ namespace AstronomicalProcessing
             ButtonBinSearch.Size = new Size(70, 23);
             ButtonBinSearch.TabIndex = 2;
             ButtonBinSearch.Text = "Binary";
+            toolTip1.SetToolTip(ButtonBinSearch, "Searches for the inputted number with Binary Search\nList will be sorted if it isn't already");
             ButtonBinSearch.UseVisualStyleBackColor = true;
             ButtonBinSearch.Click += ButtonSearch_Click;
             // 
@@ -200,6 +209,7 @@ namespace AstronomicalProcessing
             TextBoxEditValue.Name = "TextBoxEditValue";
             TextBoxEditValue.Size = new Size(146, 23);
             TextBoxEditValue.TabIndex = 7;
+            toolTip1.SetToolTip(TextBoxEditValue, "Textbox for editing the selected item");
             // 
             // ButtonEdit
             // 
@@ -208,6 +218,7 @@ namespace AstronomicalProcessing
             ButtonEdit.Size = new Size(146, 23);
             ButtonEdit.TabIndex = 8;
             ButtonEdit.Text = "Edit";
+            toolTip1.SetToolTip(ButtonEdit, "Replaces the selected number with the number in the search box");
             ButtonEdit.UseVisualStyleBackColor = true;
             ButtonEdit.Click += ButtonEdit_Click;
             // 
@@ -249,6 +260,7 @@ namespace AstronomicalProcessing
             FilePath.Size = new Size(158, 23);
             FilePath.TabIndex = 12;
             FilePath.TabStop = false;
+            toolTip1.SetToolTip(FilePath, "Currently loaded file path\nClick to load a file");
             FilePath.DoubleClick += MenuLoad_Click;
             // 
             // saveAsDialog
@@ -271,20 +283,21 @@ namespace AstronomicalProcessing
             loadFileDialog.Title = "Select File Containing Neutrino Interactions";
             loadFileDialog.FileOk += LoadSelected;
             // 
-            // ButtonSeqSearch
+            // ButtonSequentialSearch
             // 
-            ButtonSeqSearch.Location = new Point(82, 43);
-            ButtonSeqSearch.Name = "ButtonSeqSearch";
-            ButtonSeqSearch.Size = new Size(70, 23);
-            ButtonSeqSearch.TabIndex = 3;
-            ButtonSeqSearch.Text = "Sequential";
-            ButtonSeqSearch.UseVisualStyleBackColor = true;
-            ButtonSeqSearch.Click += ButtonSearch_Click;
+            ButtonSequentialSearch.Location = new Point(82, 43);
+            ButtonSequentialSearch.Name = "ButtonSequentialSearch";
+            ButtonSequentialSearch.Size = new Size(70, 23);
+            ButtonSequentialSearch.TabIndex = 3;
+            ButtonSequentialSearch.Text = "Sequential";
+            toolTip1.SetToolTip(ButtonSequentialSearch, "Searches for the inputted number with Sequential Search\nList does not need to be sorted");
+            ButtonSequentialSearch.UseVisualStyleBackColor = true;
+            ButtonSequentialSearch.Click += ButtonSearch_Click;
             // 
             // GrpSearch
             // 
             GrpSearch.Controls.Add(ButtonBinSearch);
-            GrpSearch.Controls.Add(ButtonSeqSearch);
+            GrpSearch.Controls.Add(ButtonSequentialSearch);
             GrpSearch.Controls.Add(TextBoxSearch);
             GrpSearch.Location = new Point(138, 168);
             GrpSearch.Name = "GrpSearch";
@@ -329,6 +342,7 @@ namespace AstronomicalProcessing
             TextBoxRange.ReadOnly = true;
             TextBoxRange.Size = new Size(100, 23);
             TextBoxRange.TabIndex = 16;
+            toolTip1.SetToolTip(TextBoxRange, "Calculated range of list\nUse the button to the left to calculate");
             // 
             // TextBoxMode
             // 
@@ -337,6 +351,7 @@ namespace AstronomicalProcessing
             TextBoxMode.ReadOnly = true;
             TextBoxMode.Size = new Size(100, 23);
             TextBoxMode.TabIndex = 5;
+            toolTip1.SetToolTip(TextBoxMode, "Calculated mode of list\nUse the button to the left to calculate");
             // 
             // TextBoxAverage
             // 
@@ -345,6 +360,7 @@ namespace AstronomicalProcessing
             TextBoxAverage.ReadOnly = true;
             TextBoxAverage.Size = new Size(100, 23);
             TextBoxAverage.TabIndex = 15;
+            toolTip1.SetToolTip(TextBoxAverage, "Calculated average of list\nUse the button to the left to calculate");
             // 
             // TextBoxMidExtreme
             // 
@@ -353,6 +369,7 @@ namespace AstronomicalProcessing
             TextBoxMidExtreme.ReadOnly = true;
             TextBoxMidExtreme.Size = new Size(100, 23);
             TextBoxMidExtreme.TabIndex = 4;
+            toolTip1.SetToolTip(TextBoxMidExtreme, "Calculated mid extreme of list\nUse the button to the left to calculate");
             // 
             // ButtonRange
             // 
@@ -361,6 +378,7 @@ namespace AstronomicalProcessing
             ButtonRange.Size = new Size(82, 23);
             ButtonRange.TabIndex = 3;
             ButtonRange.Text = "Range";
+            toolTip1.SetToolTip(ButtonRange, "Calculates the range of the list and\ndisplays the result in the text box to the right");
             ButtonRange.UseVisualStyleBackColor = true;
             ButtonRange.Click += ButtonRange_Click;
             // 
@@ -372,16 +390,18 @@ namespace AstronomicalProcessing
             ButtonAverage.TabIndex = 2;
             ButtonAverage.Text = "Average";
             ButtonAverage.TextAlign = ContentAlignment.TopCenter;
+            toolTip1.SetToolTip(ButtonAverage, "Calculates the average of the list and\ndisplays the result in the text box to the right");
             ButtonAverage.UseVisualStyleBackColor = true;
             ButtonAverage.Click += ButtonAverage_Click;
             // 
-            // button2
+            // ButtonMode
             // 
             ButtonMode.Location = new Point(6, 50);
-            ButtonMode.Name = "button2";
+            ButtonMode.Name = "ButtonMode";
             ButtonMode.Size = new Size(82, 23);
             ButtonMode.TabIndex = 1;
             ButtonMode.Text = "Mode";
+            toolTip1.SetToolTip(ButtonMode, "Calculates the average of the list and\ndisplays the result in the text box to the right");
             ButtonMode.UseVisualStyleBackColor = true;
             ButtonMode.Click += ButtonMode_Click;
             // 
@@ -392,10 +412,11 @@ namespace AstronomicalProcessing
             ButtonMidExtreme.Size = new Size(82, 23);
             ButtonMidExtreme.TabIndex = 0;
             ButtonMidExtreme.Text = "Mid Extreme";
+            toolTip1.SetToolTip(ButtonMidExtreme, "Calculates the mid extreme of the list and\ndisplays the result in the text box to the right");
             ButtonMidExtreme.UseVisualStyleBackColor = true;
             ButtonMidExtreme.Click += ButtonMidExtreme_Click;
             // 
-            // AstronomicalProcessing
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -413,7 +434,7 @@ namespace AstronomicalProcessing
             Controls.Add(ListBoxNeutrinos);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "AstronomicalProcessing";
+            Name = "Form1";
             Text = "Astronomical Processing";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -453,7 +474,7 @@ namespace AstronomicalProcessing
         private TextBox FilePath;
         private SaveFileDialog saveAsDialog;
         private OpenFileDialog loadFileDialog;
-        private Button ButtonSeqSearch;
+        private Button ButtonSequentialSearch;
         private GroupBox GrpSearch;
         private GroupBox GrpEdit;
         private GroupBox GrpCalulations;
@@ -465,5 +486,6 @@ namespace AstronomicalProcessing
         private TextBox TextBoxMode;
         private TextBox TextBoxAverage;
         private TextBox TextBoxMidExtreme;
+        private ToolTip toolTip1;
     }
 }
