@@ -1,10 +1,10 @@
 ﻿// Raphael Fernandes, 30099423, Sprint 2
 // Date: 6/10/2025
-// Version: 1.0
+// Version: 2.0
 // Name: Astronomical Processing
 // Class containing Sorting/Searching algorithms.
 // Can handle both ascending and descending sorts.
-namespace AT2_30099423
+namespace AstronomicalProcessing
 {
     /// <summary>
     /// Binary Search and Bubble search algorithms for integer lists.
