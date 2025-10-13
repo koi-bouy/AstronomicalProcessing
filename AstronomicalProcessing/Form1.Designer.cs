@@ -66,7 +66,7 @@ namespace AstronomicalProcessing
             TextBoxMidExtreme = new TextBox();
             ButtonRange = new Button();
             ButtonAverage = new Button();
-            button2 = new Button();
+            ButtonMode = new Button();
             ButtonMidExtreme = new Button();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
@@ -313,7 +313,7 @@ namespace AstronomicalProcessing
             GrpCalulations.Controls.Add(TextBoxMidExtreme);
             GrpCalulations.Controls.Add(ButtonRange);
             GrpCalulations.Controls.Add(ButtonAverage);
-            GrpCalulations.Controls.Add(button2);
+            GrpCalulations.Controls.Add(ButtonMode);
             GrpCalulations.Controls.Add(ButtonMidExtreme);
             GrpCalulations.Location = new Point(302, 28);
             GrpCalulations.Name = "GrpCalulations";
@@ -362,6 +362,7 @@ namespace AstronomicalProcessing
             ButtonRange.TabIndex = 3;
             ButtonRange.Text = "Range";
             ButtonRange.UseVisualStyleBackColor = true;
+            ButtonRange.Click += ButtonRange_Click;
             // 
             // ButtonAverage
             // 
@@ -372,15 +373,17 @@ namespace AstronomicalProcessing
             ButtonAverage.Text = "Average";
             ButtonAverage.TextAlign = ContentAlignment.TopCenter;
             ButtonAverage.UseVisualStyleBackColor = true;
+            ButtonAverage.Click += ButtonAverage_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(6, 50);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Mode";
-            button2.UseVisualStyleBackColor = true;
+            ButtonMode.Location = new Point(6, 50);
+            ButtonMode.Name = "button2";
+            ButtonMode.Size = new Size(82, 23);
+            ButtonMode.TabIndex = 1;
+            ButtonMode.Text = "Mode";
+            ButtonMode.UseVisualStyleBackColor = true;
+            ButtonMode.Click += ButtonMode_Click;
             // 
             // ButtonMidExtreme
             // 
@@ -390,6 +393,7 @@ namespace AstronomicalProcessing
             ButtonMidExtreme.TabIndex = 0;
             ButtonMidExtreme.Text = "Mid Extreme";
             ButtonMidExtreme.UseVisualStyleBackColor = true;
+            ButtonMidExtreme.Click += ButtonMidExtreme_Click;
             // 
             // AstronomicalProcessing
             // 
@@ -454,7 +458,7 @@ namespace AstronomicalProcessing
         private GroupBox GrpEdit;
         private GroupBox GrpCalulations;
         private Button ButtonAverage;
-        private Button button2;
+        private Button ButtonMode;
         private Button ButtonMidExtreme;
         private Button ButtonRange;
         private TextBox TextBoxRange;
