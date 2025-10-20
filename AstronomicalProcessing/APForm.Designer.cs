@@ -72,11 +72,17 @@ namespace AstronomicalProcessing
             ButtonMode = new Button();
             ButtonMidExtreme = new Button();
             toolTip1 = new ToolTip(components);
+            groupBox1 = new GroupBox();
+            TestRange = new Button();
+            TestMode = new Button();
+            TestMean = new Button();
+            TestMid = new Button();
             menuStrip1.SuspendLayout();
             GrpSortOrder.SuspendLayout();
             GrpSearch.SuspendLayout();
             GrpEdit.SuspendLayout();
             GrpCalulations.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // ListBoxNeutrinos
@@ -440,12 +446,70 @@ namespace AstronomicalProcessing
             ButtonMidExtreme.UseVisualStyleBackColor = true;
             ButtonMidExtreme.Click += ButtonMidExtreme_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(TestRange);
+            groupBox1.Controls.Add(TestMode);
+            groupBox1.Controls.Add(TestMean);
+            groupBox1.Controls.Add(TestMid);
+            groupBox1.Location = new Point(302, 211);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(200, 134);
+            groupBox1.TabIndex = 15;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // TestRange
+            // 
+            TestRange.Location = new Point(11, 98);
+            TestRange.Name = "TestRange";
+            TestRange.Size = new Size(182, 23);
+            TestRange.TabIndex = 0;
+            TestRange.Tag = "Range";
+            TestRange.Text = "Test Range";
+            TestRange.UseVisualStyleBackColor = true;
+            // 
+            // TestMode
+            // 
+            TestMode.Location = new Point(11, 47);
+            TestMode.Name = "TestMode";
+            TestMode.Size = new Size(182, 23);
+            TestMode.TabIndex = 0;
+            TestMode.Tag = "Mode";
+            TestMode.Text = "Test Mode";
+            TestMode.UseVisualStyleBackColor = true;
+            // 
+            // TestMean
+            // 
+            TestMean.Location = new Point(11, 72);
+            TestMean.Name = "TestMean";
+            TestMean.Size = new Size(182, 23);
+            TestMean.TabIndex = 0;
+            TestMean.Tag = "Mean";
+            TestMean.Text = "Test Mean";
+            TestMean.UseVisualStyleBackColor = true;
+            // 
+            // TestMid
+            // 
+            TestMid.Location = new Point(11, 22);
+            TestMid.Name = "TestMid";
+            TestMid.Size = new Size(182, 23);
+            TestMid.TabIndex = 0;
+            TestMid.Tag = "Mid";
+            TestMid.Text = "Test Mid";
+            TestMid.UseVisualStyleBackColor = true;
+            TestMid.Click += TestCalculation;
+            TestMode.Click += TestCalculation;
+            TestMean.Click += TestCalculation;
+            TestRange.Click += TestCalculation;
+            // 
             // APForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(510, 398);
+            Controls.Add(groupBox1);
             Controls.Add(GrpCalulations);
             Controls.Add(GrpEdit);
             Controls.Add(GrpSearch);
@@ -471,6 +535,7 @@ namespace AstronomicalProcessing
             GrpEdit.PerformLayout();
             GrpCalulations.ResumeLayout(false);
             GrpCalulations.PerformLayout();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -514,5 +579,10 @@ namespace AstronomicalProcessing
         private ToolTip toolTip1;
         private Label Frequency;
         private TextBox TextBoxModeFreq;
+        private GroupBox groupBox1;
+        private Button TestRange;
+        private Button TestMode;
+        private Button TestMean;
+        private Button TestMid;
     }
 }

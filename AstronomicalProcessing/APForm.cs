@@ -398,6 +398,60 @@ namespace AstronomicalProcessing
         {
             unsorted = true;
         }
+        private void SetList(List<int> newList)
+        {
+            neutrinoList.Clear();
+            neutrinoList.AddRange(newList);
+            SyncList();
+        }
+        private void TestCalculation(object sender, EventArgs e)
+        {
+            string? tag = (((Button)sender).Tag ?? string.Empty).ToString();
+            List<int>[] midTests = [
+                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+                [1,2,2,2,3,4,5,6,7,8,9,10,11,12,13]
+                ];
+            List<int> old = neutrinoList;
+            int i = 0;
 
+            List<int>[] Tests = [[]];
+            Action<object, EventArgs> calculation;
+            try
+            {
+                switch (tag)
+                {
+                    default:
+                    case "Mid":
+                        calculation = ButtonMidExtreme_Click;
+                        Tests = midTests;
+                        break;
+                    case "Mode":
+                        calculation = ButtonMode_Click;
+                        break;
+                    case "Mean":
+                        calculation = ButtonAverage_Click;
+                        break;
+                    case "Range":
+                        calculation = ButtonRange_Click;
+                        break;
+
+                }
+
+
+
+            }
+            catch (NotImplementedException)
+            {
+                return;
+            }
+            while (i < Tests.Length)
+            {
+                SetList(Tests[i]);
+                calculation(sender, e);
+                MessageBox.Show("Test no. " + ++i);
+            }
+            SetList(old);
+
+        }
     }
 }

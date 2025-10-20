@@ -63,6 +63,7 @@ namespace AstronomicalProcessing
             return Average(_list);
         }
 
+
         /// <summary>
         /// Caculates average value of given list
         /// </summary>
