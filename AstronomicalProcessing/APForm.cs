@@ -5,24 +5,48 @@
 // Simple Windows Forms Application for searching and sorting a list  
 // of recorded neutrino interactions.
 
+using System.Text;
+
 namespace AstronomicalProcessing
 {
 
     /// <summary>
     /// Main form
     /// </summary>
-    public partial class Form1 : Form
+    public partial class APForm : Form
     {
         private List<int> neutrinoList = new List<int>();
         private bool unsorted = true;
         private Calculations calc = new([]);
 
         /// <summary>
-        /// Runs setup code from Form1.designer.cs
+        /// Runs setup code from APForm.designer.cs
         /// </summary>
-        public Form1()
+        public APForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Runs on form load
+        /// </summary>
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            //set documents folder as default save path
+            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveAsDialog.InitialDirectory = documents;
+            loadFileDialog.InitialDirectory = documents;
+
+            // Set the File Path TextBox to "No file loaded" by default
+            SetPath("No file loaded.");
+
+            //Initialise values
+            neutrinoList.AddRange(GenerateNeutrinos());
+            SyncList();
+            rdoSortAsc.Checked = true;
+            calc = new Calculations(neutrinoList);
         }
 
 
@@ -167,7 +191,23 @@ namespace AstronomicalProcessing
         /// </summary>
         private void ButtonMode_Click(object sender, EventArgs e)
         {
-            TextBoxMode.Text = calc.Mode().ToString();
+            string output;
+            (int[] modes, int modeFreq) = calc.Mode();
+            if (modeFreq == 1)
+            {
+                output = "No mode.";
+            }
+            else
+            {
+                StringBuilder modesString = new(modes[0].ToString());
+                foreach (int mode in modes[1..])
+                {
+                    modesString.Append("," + mode.ToString());
+                }
+                output = modesString.ToString();
+            }
+            TextBoxMode.Text = output;
+            TextBoxModeFreq.Text = modeFreq.ToString();
         }
 
         /// <summary>
@@ -306,27 +346,6 @@ namespace AstronomicalProcessing
         }
         #endregion
 
-        /// <summary>
-        /// Initialise variables
-        /// </summary>
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            //set documents folder as default save path
-            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveAsDialog.InitialDirectory = documents;
-            loadFileDialog.InitialDirectory = documents;
-
-            // Set the File Path TextBox to "No file loaded" by default
-            SetPath("No file loaded.");
-
-            //Initialise values
-            neutrinoList.AddRange(GenerateNeutrinos());
-            SyncList();
-            rdoSortAsc.Checked = true;
-            calc = new Calculations(neutrinoList);
-        }
 
 
         /// <summary>
@@ -379,5 +398,6 @@ namespace AstronomicalProcessing
         {
             unsorted = true;
         }
+
     }
 }

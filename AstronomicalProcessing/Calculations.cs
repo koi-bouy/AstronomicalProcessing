@@ -90,7 +90,7 @@ namespace AstronomicalProcessing
         /// Finds mode of list
         /// </summary>
         /// <returns>mode of list</returns>
-        public int Mode()
+        public (int[] Modes, int Freq) Mode()
         {
             Dictionary<int, int> counts = new Dictionary<int, int>();
 
@@ -107,13 +107,14 @@ namespace AstronomicalProcessing
 
             List<int> nums = counts.Keys.ToList();
             List<int> freqs = counts.Values.ToList();
+            int maxFreq = Max(freqs);
 
             // Find index of number with highest frequency
-            int maxIndex = Algorithms.SequentialSearch(freqs, Max(freqs));
-
-            return nums[maxIndex];
+            List<int> maxIndices = Algorithms.SequentialSearchAll(freqs, maxFreq);
+            return (maxIndices.Select(index => nums[index]).ToArray(), maxFreq);
 
         }
+
 
         /// <summary>
         /// Calculates statistical range for list

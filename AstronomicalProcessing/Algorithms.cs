@@ -66,7 +66,7 @@ namespace AstronomicalProcessing
         /// </summary>
         /// <param name="list">integer list to search</param>
         /// <param name="search">integer to search for</param>
-        /// <returns>index of search item, or -1 if the item cannot be found</returns>
+        /// <returns>index of the first occurence of the search item, or -1 if the item cannot be found</returns>
         public static int SequentialSearch(List<int> list, int search)
         {
             for (int i = 0; i < list.Count; i++)
@@ -77,6 +77,38 @@ namespace AstronomicalProcessing
                 }
             }
             return -1;
+        }
+
+        /// <summary>
+        /// Loops through a list, from beginning to end,
+        /// And checks each item if it's search item.
+        /// </summary>
+        /// <param name="list">integer list to search</param>
+        /// <param name="search">list of integers to search for</param>
+        /// <returns>indices of all occurances of the search items.</returns>
+        public static List<int> SequentialSearchAll(List<int> list, List<int> search)
+        {
+            List<int> indices = [];
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (search.Contains(list[i]))
+                {
+                    indices.Add(i);
+                }
+            }
+            return indices;
+        }
+
+        /// <summary>
+        /// Loops through a list, from beginning to end,
+        /// And checks each item if it's search item.
+        /// </summary>
+        /// <param name="list">integer list to search</param>
+        /// <param name="search">integer to search for</param>
+        /// <returns>indices of all occurances of the search item.</returns>
+        public static List<int> SequentialSearchAll(List<int> list, int search)
+        {
+            return SequentialSearchAll(list, [search]);
         }
     }
 }
