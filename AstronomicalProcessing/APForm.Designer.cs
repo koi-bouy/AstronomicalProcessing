@@ -7,7 +7,7 @@
 
 namespace AstronomicalProcessing
 {
-    partial class Form1
+    partial class APForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -61,7 +61,9 @@ namespace AstronomicalProcessing
             GrpSearch = new GroupBox();
             GrpEdit = new GroupBox();
             GrpCalulations = new GroupBox();
+            Frequency = new Label();
             TextBoxRange = new TextBox();
+            TextBoxModeFreq = new TextBox();
             TextBoxMode = new TextBox();
             TextBoxAverage = new TextBox();
             TextBoxMidExtreme = new TextBox();
@@ -83,6 +85,7 @@ namespace AstronomicalProcessing
             ListBoxNeutrinos.ItemHeight = 15;
             ListBoxNeutrinos.Location = new Point(12, 28);
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
+            ListBoxNeutrinos.RightToLeft = RightToLeft.No;
             ListBoxNeutrinos.Size = new Size(120, 364);
             ListBoxNeutrinos.TabIndex = 6;
             toolTip1.SetToolTip(ListBoxNeutrinos, "List of neutrino interactions recorded\r\nover the last 24 hours");
@@ -93,12 +96,13 @@ namespace AstronomicalProcessing
             menuStrip1.Items.AddRange(new ToolStripItem[] { MenuFile });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(506, 24);
+            menuStrip1.Size = new Size(510, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
             // MenuFile
             // 
+            MenuFile.Alignment = ToolStripItemAlignment.Right;
             MenuFile.DropDownItems.AddRange(new ToolStripItem[] { MenuSave, MenuSaveAs, MenuLoad });
             MenuFile.Name = "MenuFile";
             MenuFile.Size = new Size(37, 20);
@@ -320,7 +324,9 @@ namespace AstronomicalProcessing
             // 
             // GrpCalulations
             // 
+            GrpCalulations.Controls.Add(Frequency);
             GrpCalulations.Controls.Add(TextBoxRange);
+            GrpCalulations.Controls.Add(TextBoxModeFreq);
             GrpCalulations.Controls.Add(TextBoxMode);
             GrpCalulations.Controls.Add(TextBoxAverage);
             GrpCalulations.Controls.Add(TextBoxMidExtreme);
@@ -330,32 +336,52 @@ namespace AstronomicalProcessing
             GrpCalulations.Controls.Add(ButtonMidExtreme);
             GrpCalulations.Location = new Point(302, 28);
             GrpCalulations.Name = "GrpCalulations";
-            GrpCalulations.Size = new Size(200, 147);
+            GrpCalulations.Size = new Size(200, 169);
             GrpCalulations.TabIndex = 14;
             GrpCalulations.TabStop = false;
             GrpCalulations.Text = "Statistical Calculations";
             // 
+            // Frequency
+            // 
+            Frequency.AutoSize = true;
+            Frequency.Location = new Point(163, 55);
+            Frequency.Name = "Frequency";
+            Frequency.Size = new Size(30, 15);
+            Frequency.TabIndex = 17;
+            Frequency.Text = "Freq";
+            // 
             // TextBoxRange
             // 
-            TextBoxRange.Location = new Point(94, 111);
+            TextBoxRange.Location = new Point(93, 137);
             TextBoxRange.Name = "TextBoxRange";
             TextBoxRange.ReadOnly = true;
             TextBoxRange.Size = new Size(100, 23);
             TextBoxRange.TabIndex = 16;
             toolTip1.SetToolTip(TextBoxRange, "Calculated range of list\nUse the button to the left to calculate");
             // 
+            // TextBoxModeFreq
+            // 
+            TextBoxModeFreq.Location = new Point(163, 80);
+            TextBoxModeFreq.Name = "TextBoxModeFreq";
+            TextBoxModeFreq.ReadOnly = true;
+            TextBoxModeFreq.Size = new Size(30, 23);
+            TextBoxModeFreq.TabIndex = 15;
+            TextBoxModeFreq.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(TextBoxModeFreq, "Number of times the Mode was found in the list.\r\nUse the button above to calculate");
+            // 
             // TextBoxMode
             // 
-            TextBoxMode.Location = new Point(94, 54);
+            TextBoxMode.Location = new Point(6, 80);
             TextBoxMode.Name = "TextBoxMode";
             TextBoxMode.ReadOnly = true;
-            TextBoxMode.Size = new Size(100, 23);
+            TextBoxMode.Size = new Size(151, 23);
             TextBoxMode.TabIndex = 5;
-            toolTip1.SetToolTip(TextBoxMode, "Calculated mode of list\nUse the button to the left to calculate");
+            TextBoxMode.TextAlign = HorizontalAlignment.Right;
+            toolTip1.SetToolTip(TextBoxMode, "Calculated modes of list\r\nUse the button above to calculate");
             // 
             // TextBoxAverage
             // 
-            TextBoxAverage.Location = new Point(94, 83);
+            TextBoxAverage.Location = new Point(93, 109);
             TextBoxAverage.Name = "TextBoxAverage";
             TextBoxAverage.ReadOnly = true;
             TextBoxAverage.Size = new Size(100, 23);
@@ -364,7 +390,7 @@ namespace AstronomicalProcessing
             // 
             // TextBoxMidExtreme
             // 
-            TextBoxMidExtreme.Location = new Point(94, 25);
+            TextBoxMidExtreme.Location = new Point(93, 22);
             TextBoxMidExtreme.Name = "TextBoxMidExtreme";
             TextBoxMidExtreme.ReadOnly = true;
             TextBoxMidExtreme.Size = new Size(100, 23);
@@ -373,7 +399,7 @@ namespace AstronomicalProcessing
             // 
             // ButtonRange
             // 
-            ButtonRange.Location = new Point(6, 111);
+            ButtonRange.Location = new Point(7, 137);
             ButtonRange.Name = "ButtonRange";
             ButtonRange.Size = new Size(82, 23);
             ButtonRange.TabIndex = 3;
@@ -384,7 +410,7 @@ namespace AstronomicalProcessing
             // 
             // ButtonAverage
             // 
-            ButtonAverage.Location = new Point(6, 82);
+            ButtonAverage.Location = new Point(5, 109);
             ButtonAverage.Name = "ButtonAverage";
             ButtonAverage.Size = new Size(82, 23);
             ButtonAverage.TabIndex = 2;
@@ -396,12 +422,12 @@ namespace AstronomicalProcessing
             // 
             // ButtonMode
             // 
-            ButtonMode.Location = new Point(6, 50);
+            ButtonMode.Location = new Point(6, 51);
             ButtonMode.Name = "ButtonMode";
-            ButtonMode.Size = new Size(82, 23);
+            ButtonMode.Size = new Size(83, 23);
             ButtonMode.TabIndex = 1;
             ButtonMode.Text = "Mode";
-            toolTip1.SetToolTip(ButtonMode, "Calculates the average of the list and\ndisplays the result in the text box to the right");
+            toolTip1.SetToolTip(ButtonMode, "Calculates the modes of the list and\n displays the results in the text boxes to the right");
             ButtonMode.UseVisualStyleBackColor = true;
             ButtonMode.Click += ButtonMode_Click;
             // 
@@ -416,12 +442,12 @@ namespace AstronomicalProcessing
             ButtonMidExtreme.UseVisualStyleBackColor = true;
             ButtonMidExtreme.Click += ButtonMidExtreme_Click;
             // 
-            // Form1
+            // APForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(506, 398);
+            ClientSize = new Size(510, 398);
             Controls.Add(GrpCalulations);
             Controls.Add(GrpEdit);
             Controls.Add(GrpSearch);
@@ -434,7 +460,8 @@ namespace AstronomicalProcessing
             Controls.Add(ListBoxNeutrinos);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "APForm";
+            RightToLeft = RightToLeft.No;
             Text = "Astronomical Processing";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -487,5 +514,7 @@ namespace AstronomicalProcessing
         private TextBox TextBoxAverage;
         private TextBox TextBoxMidExtreme;
         private ToolTip toolTip1;
+        private Label Frequency;
+        private TextBox TextBoxModeFreq;
     }
 }
