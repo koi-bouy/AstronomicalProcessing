@@ -1,6 +1,6 @@
 // Raphael Fernandes, 30099423, Sprint 2 
-// Date: 6/10/2025 
-// Version: 2.0 
+// Date: 20/10/2025 
+// Version: 2.1
 // Name: Astronomical Processing 
 // Simple Windows Forms Application for searching and sorting a list  
 // of recorded neutrino interactions.

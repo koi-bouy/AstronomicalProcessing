@@ -1,6 +1,6 @@
 ﻿// Raphael Fernandes, 30099423, Sprint 2
-// Date: 13/10/2025
-// Version: 2.0
+// Date: 20/10/2025
+// Version: 2.1
 // Name: Astronomical Processing
 // Class containing Methods for calculating Statistical Measures
 
@@ -82,14 +82,14 @@ namespace AstronomicalProcessing
         /// <returns>mid extreme of list</returns>
         public float MidExtreme()
         {
-            List<int> extremes = new List<int>() { Min(), Max() };
+            List<int> extremes = [Min(), Max()];
             return Average(extremes);
         }
 
         /// <summary>
         /// Finds mode of list
         /// </summary>
-        /// <returns>mode of list</returns>
+        /// <returns>most frequent numbers in the list with the frequency at which they appear</returns>
         public (int[] Modes, int Freq) Mode()
         {
             Dictionary<int, int> counts = new Dictionary<int, int>();
@@ -109,8 +109,10 @@ namespace AstronomicalProcessing
             List<int> freqs = counts.Values.ToList();
             int maxFreq = Max(freqs);
 
-            // Find index of number with highest frequency
+            // Find indices of numbers with highest frequency
             List<int> maxIndices = Algorithms.SequentialSearchAll(freqs, maxFreq);
+
+            // Return corresponding numbers, as well as the frequency
             return (maxIndices.Select(index => nums[index]).ToArray(), maxFreq);
 
         }
