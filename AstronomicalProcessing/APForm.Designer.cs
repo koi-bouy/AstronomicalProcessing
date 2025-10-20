@@ -85,7 +85,6 @@ namespace AstronomicalProcessing
             ListBoxNeutrinos.ItemHeight = 15;
             ListBoxNeutrinos.Location = new Point(12, 28);
             ListBoxNeutrinos.Name = "ListBoxNeutrinos";
-            ListBoxNeutrinos.RightToLeft = RightToLeft.No;
             ListBoxNeutrinos.Size = new Size(120, 364);
             ListBoxNeutrinos.TabIndex = 6;
             toolTip1.SetToolTip(ListBoxNeutrinos, "List of neutrino interactions recorded\r\nover the last 24 hours");
@@ -102,7 +101,6 @@ namespace AstronomicalProcessing
             // 
             // MenuFile
             // 
-            MenuFile.Alignment = ToolStripItemAlignment.Right;
             MenuFile.DropDownItems.AddRange(new ToolStripItem[] { MenuSave, MenuSaveAs, MenuLoad });
             MenuFile.Name = "MenuFile";
             MenuFile.Size = new Size(37, 20);
@@ -399,7 +397,7 @@ namespace AstronomicalProcessing
             // 
             // ButtonRange
             // 
-            ButtonRange.Location = new Point(7, 137);
+            ButtonRange.Location = new Point(5, 138);
             ButtonRange.Name = "ButtonRange";
             ButtonRange.Size = new Size(82, 23);
             ButtonRange.TabIndex = 3;
