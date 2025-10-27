@@ -183,7 +183,7 @@ namespace AstronomicalProcessing
         {
             float mid = calc.MidExtreme();
             string format = mid == (int)mid ? "f0" : "f2";
-            TextBoxMidExtreme.Text = calc.MidExtreme().ToString(format);
+            TextBoxMidExtreme.Text = mid.ToString(format);
         }
 
         /// <summary>
