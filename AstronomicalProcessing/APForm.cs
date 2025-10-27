@@ -407,26 +407,37 @@ namespace AstronomicalProcessing
         private void TestCalculation(object sender, EventArgs e)
         {
             string? tag = (((Button)sender).Tag ?? string.Empty).ToString();
+
             List<int>[] midTests = [
-                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
-                [1,2,2,2,3,4,5,6,7,8,9,10,11,12,13]
+                [4,8,12,16,20,24],
+                [1,2,3,4,5,6],
+                [-2,-4,-6,-8,-10]
                 ];
-            List<int> old = neutrinoList;
+            List<int>[] modeTests = [
+                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+                [1,2,2,2,3,4,5],
+                [1,1,1,2,2,2,3,3,3],
+                ];
+            List<int> old = [.. neutrinoList];
             int i = 0;
 
-            List<int>[] Tests = [[]];
+            List<List<int>> Tests = [
+                [],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ];
             Action<object, EventArgs> calculation;
             try
             {
                 switch (tag)
                 {
-                    default:
                     case "Mid":
                         calculation = ButtonMidExtreme_Click;
-                        Tests = midTests;
+                        Tests.AddRange(midTests);
                         break;
+                    default:
                     case "Mode":
                         calculation = ButtonMode_Click;
+                        Tests.AddRange(modeTests);
                         break;
                     case "Mean":
                         calculation = ButtonAverage_Click;
@@ -434,6 +445,7 @@ namespace AstronomicalProcessing
                     case "Range":
                         calculation = ButtonRange_Click;
                         break;
+                        return;
 
                 }
 
@@ -444,14 +456,26 @@ namespace AstronomicalProcessing
             {
                 return;
             }
-            while (i < Tests.Length)
+
+            Text += $" - Testing calculation: {tag}.";
+            while (i < Tests.Count)
             {
                 SetList(Tests[i]);
-                calculation(sender, e);
-                MessageBox.Show("Test no. " + ++i);
+                string result = tag + " test";
+                try
+                {
+                    calculation(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    result += " Failed: " + ex.Message;
+                }
+                MessageBox.Show(result, "Test no. " + ++i);
             }
             SetList(old);
+            Text = "Astronomical Processing";
 
         }
+
     }
 }

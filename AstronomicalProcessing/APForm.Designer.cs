@@ -457,7 +457,7 @@ namespace AstronomicalProcessing
             groupBox1.Size = new Size(200, 134);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Tests";
             // 
             // TestRange
             // 
@@ -468,6 +468,7 @@ namespace AstronomicalProcessing
             TestRange.Tag = "Range";
             TestRange.Text = "Test Range";
             TestRange.UseVisualStyleBackColor = true;
+            TestRange.Click += TestCalculation;
             // 
             // TestMode
             // 
@@ -478,6 +479,7 @@ namespace AstronomicalProcessing
             TestMode.Tag = "Mode";
             TestMode.Text = "Test Mode";
             TestMode.UseVisualStyleBackColor = true;
+            TestMode.Click += TestCalculation;
             // 
             // TestMean
             // 
@@ -488,6 +490,7 @@ namespace AstronomicalProcessing
             TestMean.Tag = "Mean";
             TestMean.Text = "Test Mean";
             TestMean.UseVisualStyleBackColor = true;
+            TestMean.Click += TestCalculation;
             // 
             // TestMid
             // 
@@ -499,9 +502,6 @@ namespace AstronomicalProcessing
             TestMid.Text = "Test Mid";
             TestMid.UseVisualStyleBackColor = true;
             TestMid.Click += TestCalculation;
-            TestMode.Click += TestCalculation;
-            TestMean.Click += TestCalculation;
-            TestRange.Click += TestCalculation;
             // 
             // APForm
             // 

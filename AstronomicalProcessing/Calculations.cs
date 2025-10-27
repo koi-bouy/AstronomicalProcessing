@@ -16,7 +16,8 @@ namespace AstronomicalProcessing
 
         /// <summary>
         /// Finds max value in list
-        /// </summary>
+        /// </summary>        /// 
+        /// <exception cref="ArgumentOutOfRangeException"/>
         /// <returns>max value in list</returns>
         public int Max()
         {
@@ -26,6 +27,7 @@ namespace AstronomicalProcessing
         /// <summary>
         /// Finds max value in given list
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"/>
         /// <param name="list">list to find max value for</param>
         /// <returns>max value in given list</returns>
         public static int Max(List<int> list)
@@ -93,7 +95,7 @@ namespace AstronomicalProcessing
         /// <returns>most frequent numbers in the list with the frequency at which they appear</returns>
         public (int[] Modes, int Freq) Mode()
         {
-            Dictionary<int, int> counts = new Dictionary<int, int>();
+            Dictionary<int, int> counts = [];
 
             // Count each item in the list
             foreach (int num in _list)
