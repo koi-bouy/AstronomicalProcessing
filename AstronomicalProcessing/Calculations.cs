@@ -73,7 +73,8 @@ namespace AstronomicalProcessing
             int sum = 0;
             foreach (int num in list)
                 sum += num;
-            return (float)sum / list.Count;
+            float result = (float)sum / list.Count;
+            return result;
         }
 
         /// <summary>
@@ -83,7 +84,8 @@ namespace AstronomicalProcessing
         public float MidExtreme()
         {
             List<int> extremes = [Min(), Max()];
-            return Average(extremes);
+            float result = Average(extremes);
+            return result;
         }
 
         /// <summary>
@@ -113,7 +115,9 @@ namespace AstronomicalProcessing
             List<int> maxIndices = Algorithms.SequentialSearchAll(freqs, maxFreq);
 
             // Return corresponding numbers, as well as the frequency
-            return (maxIndices.Select(index => nums[index]).ToArray(), maxFreq);
+            int[] modes = maxIndices.Select(index => nums[index]).ToArray();
+
+            return (modes, maxFreq);
 
         }
 
@@ -124,7 +128,8 @@ namespace AstronomicalProcessing
         /// <returns>statistical range of list</returns>
         public int Range()
         {
-            return Max() - Min();
+            int result = Max() - Min();
+            return result;
         }
 
 
