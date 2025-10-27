@@ -325,11 +325,11 @@ namespace AstronomicalProcessing
                         neutrinoList.Clear();
                         foreach (int item in ListBoxNeutrinos.Items)
                             neutrinoList.Add(item);
-                        return;
+                        break;
                     }
                 }
+                SyncList();
             }
-
         }
 
         /// <summary>
